@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hashMap | 曲徑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Java集合类的图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hashMap">
+<meta property="og:url" content="http://yoursite.com/2016/09/28/hashMap/index.html">
+<meta property="og:site_name" content="曲徑">
+<meta property="og:description" content="Java集合类的图">
+<meta property="og:image" content="https://camo.githubusercontent.com/3e7e32f74829d2adcd72143e356c39ccb6c995e8/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313430363238313434323035363235">
+<meta property="og:image" content="https://camo.githubusercontent.com/8565fd90daccb7f62375f2164a5eaf5b88b6e2b1/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f32303134303730313139313430333736343f77617465726d61726b2f322f746578742f6148523063446f764c324a736232637559334e6b626935755a585176626e4e665932396b5a513d3d2f666f6e742f3561364c354c32542f666f6e7473697a652f3430302f66696c6c2f49304a42516b46434d413d3d2f646973736f6c76652f37302f677261766974792f536f75746845617374">
+<meta property="og:updated_time" content="2016-09-28T14:37:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hashMap">
+<meta name="twitter:description" content="Java集合类的图">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/3e7e32f74829d2adcd72143e356c39ccb6c995e8/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313430363238313434323035363235">
+  
+    <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">曲徑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/howiefh" title="Github" target="_blank"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hashMap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2016/09/28/hashMap/" class="article-date">
+  <time datetime="2016-09-28T14:35:29.000Z" itemprop="datePublished">2016-09-28</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hashMap
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>Contents</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>Java集合类的图<img src="https://camo.githubusercontent.com/3e7e32f74829d2adcd72143e356c39ccb6c995e8/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313430363238313434323035363235" alt="Java集合类的图"><br><a id="more"></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></div><div class="line">    <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</div><div class="line">    <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></div><div class="line">&#123;</div><div class="line"><span class="comment">//初始化</span></div><div class="line"><span class="comment">//initialCapacity 容量大小 loadFactor 加载因子  </span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</div><div class="line">      <span class="comment">//先判断容量，不够就*2。初始值static final int DEFAULT_INITIAL_CAPACITY = 16;</span></div><div class="line">      <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> +</div><div class="line">                                             initialCapacity);</div><div class="line">      <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</div><div class="line">          initialCapacity = MAXIMUM_CAPACITY;</div><div class="line">      <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</div><div class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +</div><div class="line">                                             loadFactor);</div><div class="line">  </div><div class="line">      <span class="comment">// Find a power of 2 &gt;= initialCapacity</span></div><div class="line">      <span class="keyword">int</span> capacity = <span class="number">1</span>;</div><div class="line">      <span class="comment">//找出“大于initialCapacity”的最小的2的幂   </span></div><div class="line">      <span class="keyword">while</span> (capacity &lt; initialCapacity)</div><div class="line">          capacity &lt;&lt;= <span class="number">1</span>;</div><div class="line">  </div><div class="line">      <span class="keyword">this</span>.loadFactor = loadFactor;</div><div class="line">      <span class="comment">// 设置“HashMap阈值”，当HashMap中存储数据的数量达到threshold时，就需要将HashMap的容量加倍。    </span></div><div class="line">      threshold = (<span class="keyword">int</span>)Math.min(capacity * loadFactor, MAXIMUM_CAPACITY + <span class="number">1</span>);</div><div class="line">      <span class="comment">// 创建Entry数组，用来保存数据    </span></div><div class="line">      table = <span class="keyword">new</span> Entry[capacity];</div><div class="line">      useAltHashing = sun.misc.VM.isBooted() &amp;&amp;</div><div class="line">              (capacity &gt;= Holder.ALTERNATIVE_HASHING_THRESHOLD);</div><div class="line">      init();</div><div class="line">  </div><div class="line">      <span class="function"><span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object k)</span> </span>&#123;</div><div class="line">          <span class="keyword">int</span> h = <span class="number">0</span>;</div><div class="line">          <span class="keyword">if</span> (useAltHashing) &#123;</div><div class="line">              <span class="keyword">if</span> (k <span class="keyword">instanceof</span> String) &#123;</div><div class="line">                  <span class="keyword">return</span> sun.misc.Hashing.stringHash32((String) k);</div><div class="line">              &#125;</div><div class="line">              h = hashSeed;</div><div class="line">          &#125;</div><div class="line">  </div><div class="line">          h ^= k.hashCode();</div><div class="line">  </div><div class="line">          <span class="comment">// This function ensures that hashCodes that differ only by</span></div><div class="line">          <span class="comment">// constant multiples at each bit position have a bounded</span></div><div class="line">          <span class="comment">// number of collisions (approximately 8 at default load factor).</span></div><div class="line">          h ^= (h &gt;&gt;&gt; <span class="number">20</span>) ^ (h &gt;&gt;&gt; <span class="number">12</span>);</div><div class="line">          <span class="keyword">return</span> h ^ (h &gt;&gt;&gt; <span class="number">7</span>) ^ (h &gt;&gt;&gt; <span class="number">4</span>);</div><div class="line">      &#125;</div><div class="line">       <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</div><div class="line">          <span class="keyword">if</span> (key == <span class="keyword">null</span>)</div><div class="line">              <span class="keyword">return</span> putForNullKey(value);</div><div class="line">          <span class="keyword">int</span> hash = hash(key);</div><div class="line">          <span class="comment">//用hash来散列位置 其中用a&amp;(b-1)来代替a%b,效率更高</span></div><div class="line">          <span class="keyword">int</span> i = indexFor(hash, table.length);</div><div class="line">          <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="keyword">null</span>; e = e.next) &#123;</div><div class="line">              Object k;</div><div class="line">              <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;</div><div class="line">                  V oldValue = e.value;</div><div class="line">                  e.value = value;</div><div class="line">                  e.recordAccess(<span class="keyword">this</span>);</div><div class="line">                  <span class="keyword">return</span> oldValue;</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">  </div><div class="line">      modCount++;</div><div class="line">      addEntry(hash, key, value, i);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line">     </div><div class="line">  <span class="comment">// 获取key对应的value    </span></div><div class="line">  <span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;    </div><div class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>)    </div><div class="line">          <span class="keyword">return</span> getForNullKey();    </div><div class="line">      <span class="comment">// 获取key的hash值    </span></div><div class="line">      <span class="keyword">int</span> hash = hash(key.hashCode());    </div><div class="line">      <span class="comment">// 在“该hash值对应的链表”上查找“键值等于key”的元素    </span></div><div class="line">      <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)];    </div><div class="line">           e != <span class="keyword">null</span>;    </div><div class="line">           e = e.next) &#123;    </div><div class="line">          Object k;    </div><div class="line">          <span class="comment">//判断key是否相同  </span></div><div class="line">          <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k)))    </div><div class="line">              <span class="keyword">return</span> e.value;    </div><div class="line">      &#125;  </div><div class="line">      <span class="comment">//没找到则返回null  </span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;    </div><div class="line">  &#125;    </div><div class="line">  </div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>hashmap总结：<br>1.存储结构<br><img src="https://camo.githubusercontent.com/8565fd90daccb7f62375f2164a5eaf5b88b6e2b1/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f32303134303730313139313430333736343f77617465726d61726b2f322f746578742f6148523063446f764c324a736232637559334e6b626935755a585176626e4e665932396b5a513d3d2f666f6e742f3561364c354c32542f666f6e7473697a652f3430302f66696c6c2f49304a42516b46434d413d3d2f646973736f6c76652f37302f677261766974792f536f75746845617374" alt="Java集合类的图"><br>紫色部分代表哈希表，链表用于解决冲突，如果不同的key映射到了数组的同一位置，就将放入单链表中。（hash值 取模了位置会相同！）<br>2、首先看链表中节点的数据结构：<br>它的结构元素除了key、value、hash外，还有next，next指向下一个节点。另外，这里覆写了equals和hashCode方法来保证键值对的独一无二。</p>
+<p>3、HashMap共有四个构造方法。构造方法中提到了两个很重要的参数：初始容量和加载因子。这两个参数是影响HashMap性能的重要参数，其中容量表示哈希表中槽的数量（即哈希数组的长度），初始容量是创建哈希表时的容量（从构造函数中可以看出，如果不指明，则默认为16），加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize 操作（即扩容）。</p>
+<p>下面说下加载因子，如果加载因子越大，对空间的利用更充分，但是查找效率会降低（链表长度会越来越长）；如果加载因子太小，那么表中的数据将过于稀疏（很多空间还没用，就开始扩容了），对空间造成严重浪费。如果我们在构造方法中不指定，则系统默认加载因子为0.75，这是一个比较理想的值，一般情况下我们是无需修改的。</p>
+<p>另外，无论我们指定的容量为多少，构造方法都会将实际容量设为不小于指定容量的2的次方的一个数，且最大值不能超过2的30次方</p>
+<p>4、HashMap中key和value都允许为null。</p>
+<p>5、要重点分析下HashMap中用的最多的两个方法put和get。先从比较简单的get方法着手，源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取key对应的value    </span></div><div class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;    </div><div class="line">    <span class="keyword">if</span> (key == <span class="keyword">null</span>)    </div><div class="line">        <span class="keyword">return</span> getForNullKey();    </div><div class="line">    <span class="comment">// 获取key的hash值    </span></div><div class="line">    <span class="keyword">int</span> hash = hash(key.hashCode());    </div><div class="line">    <span class="comment">// 在“该hash值对应的链表”上查找“键值等于key”的元素    </span></div><div class="line">    <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[indexFor(hash, table.length)];    </div><div class="line">         e != <span class="keyword">null</span>;    </div><div class="line">         e = e.next) &#123;    </div><div class="line">        Object k;    </div><div class="line">/判断key是否相同  </div><div class="line">        <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k)))    </div><div class="line">            <span class="keyword">return</span> e.value;    </div><div class="line">    &#125;  </div><div class="line">没找到则返回<span class="keyword">null</span>  </div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;    </div><div class="line">&#125;    </div><div class="line"></div><div class="line"><span class="comment">// 获取“key为null”的元素的值    </span></div><div class="line"><span class="comment">// HashMap将“key为null”的元素存储在table[0]位置，但不一定是该链表的第一个位置！    </span></div><div class="line"><span class="function"><span class="keyword">private</span> V <span class="title">getForNullKey</span><span class="params">()</span> </span>&#123;    </div><div class="line">    <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[<span class="number">0</span>]; e != <span class="keyword">null</span>; e = e.next) &#123;    </div><div class="line">        <span class="keyword">if</span> (e.key == <span class="keyword">null</span>)    </div><div class="line">            <span class="keyword">return</span> e.value;    </div><div class="line">    &#125;    </div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先，如果key为null，则直接从哈希表的第一个位置table[0]对应的链表上查找。记住，key为null的键值对永远都放在以table[0]为头结点的链表中，当然不一定是存放在头结点table[0]中。</p>
+<p>如果key不为null，则先求的key的hash值，根据hash值找到在table中的索引，在该索引对应的单链表中查找是否有键值对的key与目标key相等，有就返回对应的value，没有则返回null。</p>
+<p>put方法稍微复杂些，代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">// 将“key-value”添加到HashMap中    </span></div><div class="line">  <span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;    </div><div class="line">      <span class="comment">// 若“key为null”，则将该键值对添加到table[0]中。    </span></div><div class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>)    </div><div class="line">          <span class="keyword">return</span> putForNullKey(value);    </div><div class="line">      <span class="comment">// 若“key不为null”，则计算该key的哈希值，然后将其添加到该哈希值对应的链表中。    </span></div><div class="line">      <span class="keyword">int</span> hash = hash(key.hashCode());    </div><div class="line">      <span class="keyword">int</span> i = indexFor(hash, table.length);    </div><div class="line">      <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[i]; e != <span class="keyword">null</span>; e = e.next) &#123;    </div><div class="line">          Object k;    </div><div class="line">          <span class="comment">// 若“该key”对应的键值对已经存在，则用新的value取代旧的value。然后退出！    </span></div><div class="line">          <span class="keyword">if</span> (e.hash == hash &amp;&amp; ((k = e.key) == key || key.equals(k))) &#123;    </div><div class="line">              V oldValue = e.value;    </div><div class="line">              e.value = value;    </div><div class="line">              e.recordAccess(<span class="keyword">this</span>);    </div><div class="line">              <span class="keyword">return</span> oldValue;    </div><div class="line">          &#125;    </div><div class="line">      &#125;    </div><div class="line">    </div><div class="line">      <span class="comment">// 若“该key”对应的键值对不存在，则将“key-value”添加到table中    </span></div><div class="line">      modCount++;  </div><div class="line"><span class="comment">//将key-value添加到table[i]处  </span></div><div class="line">      addEntry(hash, key, value, i);    </div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;    </div><div class="line">  &#125;   </div><div class="line">如果key为<span class="keyword">null</span>，则将其添加到table[<span class="number">0</span>]对应的链表中，putForNullKey的源码如下：</div><div class="line"></div><div class="line"><span class="comment">// putForNullKey()的作用是将“key为null”键值对添加到table[0]位置    </span></div><div class="line"><span class="function"><span class="keyword">private</span> V <span class="title">putForNullKey</span><span class="params">(V value)</span> </span>&#123;    </div><div class="line">    <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[<span class="number">0</span>]; e != <span class="keyword">null</span>; e = e.next) &#123;    </div><div class="line">        <span class="keyword">if</span> (e.key == <span class="keyword">null</span>) &#123;    </div><div class="line">            V oldValue = e.value;    </div><div class="line">            e.value = value;    </div><div class="line">            e.recordAccess(<span class="keyword">this</span>);    </div><div class="line">            <span class="keyword">return</span> oldValue;    </div><div class="line">        &#125;    </div><div class="line">    &#125;    </div><div class="line">    <span class="comment">// 如果没有存在key为null的键值对，则直接题阿见到table[0]处!    </span></div><div class="line">    modCount++;    </div><div class="line">    addEntry(<span class="number">0</span>, <span class="keyword">null</span>, value, <span class="number">0</span>);    </div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果key不为null，则同样先求出key的hash值，根据hash值得出在table中的索引，而后遍历对应的单链表，如果单链表中存在与目标key相等的键值对，则将新的value覆盖旧的value，比将旧的value返回，如果找不到与目标key相等的键值对，或者该单链表为空，则将该键值对插入到改单链表的头结点位置（每次新插入的节点都是放在头结点的位置），该操作是有addEntry方法实现的，它的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 新增Entry。将“key-value”插入指定位置，bucketIndex是位置索引。    </span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;    </div><div class="line">    <span class="comment">// 保存“bucketIndex”位置的值到“e”中    </span></div><div class="line">    Entry&lt;K,V&gt; e = table[bucketIndex];    </div><div class="line">    <span class="comment">// 设置“bucketIndex”位置的元素为“新Entry”，    </span></div><div class="line">    <span class="comment">// 设置“e”为“新Entry的下一个节点”    </span></div><div class="line">    table[bucketIndex] = <span class="keyword">new</span> Entry&lt;K,V&gt;(hash, key, value, e);    </div><div class="line">    <span class="comment">// 若HashMap的实际大小 不小于 “阈值”，则调整HashMap的大小    </span></div><div class="line">    <span class="keyword">if</span> (size++ &gt;= threshold)    </div><div class="line">        resize(<span class="number">2</span> * table.length);    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意这里倒数第三行的构造方法，将key-value键值对赋给table[bucketIndex]，并将其next指向元素e，这便将key-value放到了头结点中，并将之前的头结点接在了它的后面。该方法也说明，每次put键值对的时候，总是将新的该键值对放在table[bucketIndex]处（即头结点处）。</p>
+<p>两外注意最后两行代码，每次加入键值对时，都要判断当前已用的槽的数目是否大于等于阀值（容量*加载因子），如果大于等于，则进行扩容，将容量扩为原来容量的2倍。</p>
+<p>6、关于扩容。上面我们看到了扩容的方法，resize方法，它的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 重新调整HashMap的大小，newCapacity是调整后的单位    </span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> newCapacity)</span> </span>&#123;    </div><div class="line">    Entry[] oldTable = table;    </div><div class="line">    <span class="keyword">int</span> oldCapacity = oldTable.length;    </div><div class="line">    <span class="keyword">if</span> (oldCapacity == MAXIMUM_CAPACITY) &#123;    </div><div class="line">        threshold = Integer.MAX_VALUE;    </div><div class="line">        <span class="keyword">return</span>;    </div><div class="line">    &#125;    </div><div class="line">    </div><div class="line">    <span class="comment">// 新建一个HashMap，将“旧HashMap”的全部元素添加到“新HashMap”中，    </span></div><div class="line">    <span class="comment">// 然后，将“新HashMap”赋值给“旧HashMap”。    </span></div><div class="line">    Entry[] newTable = <span class="keyword">new</span> Entry[newCapacity];    </div><div class="line">    transfer(newTable);    </div><div class="line">    table = newTable;    </div><div class="line">    threshold = (<span class="keyword">int</span>)(newCapacity * loadFactor);    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>很明显，是新建了一个HashMap的底层数组，而后调用transfer方法，将就HashMap的全部元素添加到新的HashMap中（要重新计算元素在新的数组中的索引位置）。transfer方法的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将HashMap中的全部元素都添加到newTable中    </span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">transfer</span><span class="params">(Entry[] newTable)</span> </span>&#123;    </div><div class="line">    Entry[] src = table;    </div><div class="line">    <span class="keyword">int</span> newCapacity = newTable.length;    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; src.length; j++) &#123;    </div><div class="line">        Entry&lt;K,V&gt; e = src[j];    </div><div class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;    </div><div class="line">            src[j] = <span class="keyword">null</span>;    </div><div class="line">            do &#123;    </div><div class="line">                Entry&lt;K,V&gt; next = e.next;    </div><div class="line">                <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);    </div><div class="line">                e.next = newTable[i];    </div><div class="line">                newTable[i] = e;    </div><div class="line">                e = next;    </div><div class="line">            &#125; <span class="keyword">while</span> (e != <span class="keyword">null</span>);    </div><div class="line">        &#125;    </div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>很明显，扩容是一个相当耗时的操作，因为它需要重新计算这些元素在新的数组中的位置并进行复制处理。因此，我们在用HashMap的时，最好能提前预估下HashMap中元素的个数，这样有助于提高HashMap的性能。</p>
+<p>7、注意containsKey方法和containsValue方法。前者直接可以通过key的哈希值将搜索范围定位到指定索引对应的链表，而后者要对哈希数组的每个链表进行搜索。</p>
+<p>8、我们重点来分析下求hash值和索引值的方法，这两个方法便是HashMap设计的最为核心的部分，二者结合能保证哈希表中的元素尽可能均匀地散列。</p>
+<p>计算哈希值的方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(<span class="keyword">int</span> h)</span> </span>&#123;  </div><div class="line">        h ^= (h &gt;&gt;&gt; <span class="number">20</span>) ^ (h &gt;&gt;&gt; <span class="number">12</span>);  </div><div class="line">        <span class="keyword">return</span> h ^ (h &gt;&gt;&gt; <span class="number">7</span>) ^ (h &gt;&gt;&gt; <span class="number">4</span>);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>它只是一个数学公式，IDK这样设计对hash值的计算，自然有它的好处，至于为什么这样设计，我们这里不去追究，只要明白一点，用的位的操作使hash值的计算效率很高。</p>
+<p>由hash值找到对应索引的方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">indexFor</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> length)</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> h &amp; (length-<span class="number">1</span>);  </div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>这个我们要重点说下，我们一般对哈希表的散列很自然地会想到用hash值对length取模（即除法散列法），Hashtable中也是这样实现的，这种方法基本能保证元素在哈希表中散列的比较均匀，但取模会用到除法运算，效率很低，HashMap中则通过h&amp;(length-1)的方法来代替取模，同样实现了均匀的散列，但效率要高很多，这也是HashMap对Hashtable的一个改进。</p>
+<p>接下来，我们分析下为什么哈希表的容量一定要是2的整数次幂。首先，length为2的整数次幂的话，h&amp;(length-1)就相当于对length取模，这样便保证了散列的均匀，同时也提升了效率；其次，length为2的整数次幂的话，为偶数，这样length-1为奇数，奇数的最后一位是1，这样便保证了h&amp;(length-1)的最后一位可能为0，也可能为1（这取决于h的值），即与后的结果可能为偶数，也可能为奇数，这样便可以保证散列的均匀性，而如果length为奇数的话，很明显length-1为偶数，它的最后一位是0，这样h&amp;(length-1)的最后一位肯定为0，即只能为偶数，这样任何hash值都只会被散列到数组的偶数下标位置上，这便浪费了近一半的空间，因此，length取2的整数次幂，是为了使不同hash值发生碰撞的概率较小，这样就能使元素在哈希表中均匀地散列。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <!-- 百度分享 Start -->
+	  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+	  <!-- 百度分享 End -->
+	  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+	  
+<span>
+Updated:<time datetime="2016-09-28T14:37:51.000Z" itemprop="dateModified">2016-09-28</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/28/hashTable/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hashTable
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/23/20160904/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">挖财一面</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+</section>
+        
+          
+  <div id="toc" class="toc-aside">
+  <h2 class="toc-title">Contents</h2>
+  
+  </div>
+
+<aside id="sidebar">
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">作者</h3>
+  <ul class="widget about-me">
+    
+    <li><img class="author" title="About me" src="https://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787?s=180" /></li>
+    
+    
+    <li>王开/Kai/在校大学生/科技阴谋论/半果粉/osx使用者</li>
+    
+  </ul>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/数据库/" style="font-size: 13px; color: #7dc3de">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/随笔/" style="font-size: 13px; color: #7dc3de">随笔</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/28/LinkedList/">LinkedList</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/LinkedHashMap/">LinkedHashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/hashTable/">hashTable</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/hashMap/">hashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/23/20160904/">挖财一面</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">Links</h3>
+  <ul class="widget">
+    
+    <li><a href="http://yibo.iyiyun.com/js/yibo404/key/1" target="_BLANK">404 page</a></li>
+    
+  </ul>
+</div>
+
+
+  
+
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 kai<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and Theme by <a href="https://github.com/howiefh/hexo-theme-landscape-f" target="_blank" title="Landscape-F">Landscape-F</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+
+<!-- 多说公共JS代码 end -->
+
+<!-- 百度分享 start -->
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","douban","bdysc","sqq","qq","hi","baidu","huaban","youdao","sdo","mail","xg","diandian","fx","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<!--
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+-->
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<div class="bottom-btn">
+
+	<a class="icon-gotop" href="javascript:void(0)" title="返回顶部"></a>
+	<script src="/js/gotop.js"></script>
+	<!--
+	<script src="/js/gotop.js"></script>
+	-->
+
+
+	<a class="icon-toc-toggle" href="javascript:void(0)" title="文章目录"></a>
+	<!--
+	<script src="/js/toc_aside_toggle.js"></script>
+	-->
+
+</div>
+<script src="/js/toc_aside_toggle.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

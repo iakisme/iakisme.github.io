@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>hashTable | 曲徑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HashTable同样是基于哈希表实现的，同样每个元素都是key-value对，其内部也是通过单链表解决冲突问题，容量不足（超过了阈值）时，同样会自动增长。
+Hashtable也是JDK1.0引入的类，是线程安全的，能用于多线程环境中。
+Hashtable同样实现了Serializable接口，它支持序列化，实现了Cloneable接口，能被克隆。
+针对Hashtable，我们同样给出几点比较重要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hashTable">
+<meta property="og:url" content="http://yoursite.com/2016/09/28/hashTable/index.html">
+<meta property="og:site_name" content="曲徑">
+<meta property="og:description" content="HashTable同样是基于哈希表实现的，同样每个元素都是key-value对，其内部也是通过单链表解决冲突问题，容量不足（超过了阈值）时，同样会自动增长。
+Hashtable也是JDK1.0引入的类，是线程安全的，能用于多线程环境中。
+Hashtable同样实现了Serializable接口，它支持序列化，实现了Cloneable接口，能被克隆。
+针对Hashtable，我们同样给出几点比较重要">
+<meta property="og:updated_time" content="2016-09-28T14:37:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hashTable">
+<meta name="twitter:description" content="HashTable同样是基于哈希表实现的，同样每个元素都是key-value对，其内部也是通过单链表解决冲突问题，容量不足（超过了阈值）时，同样会自动增长。
+Hashtable也是JDK1.0引入的类，是线程安全的，能用于多线程环境中。
+Hashtable同样实现了Serializable接口，它支持序列化，实现了Cloneable接口，能被克隆。
+针对Hashtable，我们同样给出几点比较重要">
+  
+    <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">曲徑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/howiefh" title="Github" target="_blank"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hashTable" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2016/09/28/hashTable/" class="article-date">
+  <time datetime="2016-09-28T14:36:43.000Z" itemprop="datePublished">2016-09-28</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hashTable
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>Contents</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>HashTable同样是基于哈希表实现的，同样每个元素都是key-value对，其内部也是通过单链表解决冲突问题，容量不足（超过了阈值）时，同样会自动增长。</p>
+<p>Hashtable也是JDK1.0引入的类，是线程安全的，能用于多线程环境中。</p>
+<p>Hashtable同样实现了Serializable接口，它支持序列化，实现了Cloneable接口，能被克隆。</p>
+<p>针对Hashtable，我们同样给出几点比较重要的总结，但要结合与HashMap的比较来总结。</p>
+<ol>
+<li>二者的存储结构和解决冲突的方法都是相同的。</li>
+<li>HashTable在不指定容量的情况下的默认容量为11，而HashMap为16，Hashtable不要求底层数组的容量一定要为2的整数次幂，而HashMap则要求一定为2的整数次幂。</li>
+<li>Hashtable中key和value都不允许为null，而HashMap中key和value都允许为null（key只能有一个为null，而value则可以有多个为null）。但是如果在Hashtable中有类似put(null,null)的操作，编译同样可以通过，因为key和value都是Object类型，但运行时会抛出NullPointerException异常，这是JDK的规范规定的。我们来看下ContainsKey方法和ContainsValue的源码：</li>
+</ol>
+<a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">// 判断Hashtable是否包含“值(value)”    </span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object value)</span> </span>&#123;    </div><div class="line"> <span class="comment">//注意，Hashtable中的value不能是null，    </span></div><div class="line"> <span class="comment">// 若是null的话，抛出异常!    </span></div><div class="line"> <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;    </div><div class="line">     <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();    </div><div class="line"> &#125;    </div><div class="line"></div><div class="line"> <span class="comment">// 从后向前遍历table数组中的元素(Entry)    </span></div><div class="line"> <span class="comment">// 对于每个Entry(单向链表)，逐个遍历，判断节点的值是否等于value    </span></div><div class="line"> Entry tab[] = table;    </div><div class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i = tab.length ; i-- &gt; <span class="number">0</span> ;) &#123;    </div><div class="line">     <span class="keyword">for</span> (Entry&lt;K,V&gt; e = tab[i] ; e != <span class="keyword">null</span> ; e = e.next) &#123;    </div><div class="line">         <span class="keyword">if</span> (e.value.equals(value)) &#123;    </div><div class="line">             <span class="keyword">return</span> <span class="keyword">true</span>;    </div><div class="line">         &#125;    </div><div class="line">     &#125;    </div><div class="line"> &#125;    </div><div class="line"> <span class="keyword">return</span> <span class="keyword">false</span>; </div><div class="line"> &#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsValue</span><span class="params">(Object value)</span> </span>&#123;    </div><div class="line"> 	<span class="keyword">return</span> contains(value);   </div><div class="line">&#125;</div><div class="line"> <span class="comment">// 判断Hashtable是否包含key    </span></div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(Object key)</span> </span>&#123;    </div><div class="line">    Entry tab[] = table;    </div><div class="line">   /计算hash值，直接用key的hashCode代替  </div><div class="line">    <span class="keyword">int</span> hash = key.hashCode();      </div><div class="line"> <span class="comment">// 计算在数组中的索引值   </span></div><div class="line">    <span class="keyword">int</span> index = (hash &amp; <span class="number">0x7FFFFFFF</span>) % tab.length;    </div><div class="line"> <span class="comment">// 找到“key对应的Entry(链表)”，然后在链表中找出“哈希值”和“键值”与key都相等的元素    </span></div><div class="line"> <span class="keyword">for</span> (Entry&lt;K,V&gt; e = tab[index] ; e != <span class="keyword">null</span> ; e = e.next) &#123;    </div><div class="line">     <span class="keyword">if</span> ((e.hash == hash) &amp;&amp; e.key.equals(key)) &#123;    </div><div class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;    </div><div class="line">     &#125;    </div><div class="line"> &#125;    </div><div class="line"> <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>很明显，如果value为null，会直接抛出NullPointerException异常，但源码中并没有对key是否为null判断，有点小不解！不过NullPointerException属于RuntimeException异常，是可以由JVM自动抛出的，也许对key的值在JVM中有所限制吧。</p>
+<ol>
+<li>Hashtable扩容时，将容量变为原来的2倍加1，而HashMap扩容时，将容量变为原来的2倍。</li>
+<li>Hashtable和HashMap都重新计算了key的hash值，Hashtable在求hash值对应的位置索引时，用取模运算，而HashMap在求位置索引时，则用与运算，且这里一般先用hash&amp;0x7FFFFFFF后，再对length取模，&amp;0x7FFFFFFF的目的是为了将负的hash值转化为正值，因为hash值有可能为负数，而&amp;0x7FFFFFFF后，只有符号外改变，而后面的位都不变。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <!-- 百度分享 Start -->
+	  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+	  <!-- 百度分享 End -->
+	  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+	  
+<span>
+Updated:<time datetime="2016-09-28T14:37:38.000Z" itemprop="dateModified">2016-09-28</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/09/28/LinkedHashMap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          LinkedHashMap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/28/hashMap/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hashMap</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+</section>
+        
+          
+  <div id="toc" class="toc-aside">
+  <h2 class="toc-title">Contents</h2>
+  
+  </div>
+
+<aside id="sidebar">
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">作者</h3>
+  <ul class="widget about-me">
+    
+    <li><img class="author" title="About me" src="https://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787?s=180" /></li>
+    
+    
+    <li>王开/Kai/在校大学生/科技阴谋论/半果粉/osx使用者</li>
+    
+  </ul>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/数据库/" style="font-size: 13px; color: #7dc3de">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/随笔/" style="font-size: 13px; color: #7dc3de">随笔</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/28/LinkedList/">LinkedList</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/LinkedHashMap/">LinkedHashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/hashTable/">hashTable</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/hashMap/">hashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/23/20160904/">挖财一面</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">Links</h3>
+  <ul class="widget">
+    
+    <li><a href="http://yibo.iyiyun.com/js/yibo404/key/1" target="_BLANK">404 page</a></li>
+    
+  </ul>
+</div>
+
+
+  
+
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 kai<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and Theme by <a href="https://github.com/howiefh/hexo-theme-landscape-f" target="_blank" title="Landscape-F">Landscape-F</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+
+<!-- 多说公共JS代码 end -->
+
+<!-- 百度分享 start -->
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","douban","bdysc","sqq","qq","hi","baidu","huaban","youdao","sdo","mail","xg","diandian","fx","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<!--
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+-->
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<div class="bottom-btn">
+
+	<a class="icon-gotop" href="javascript:void(0)" title="返回顶部"></a>
+	<script src="/js/gotop.js"></script>
+	<!--
+	<script src="/js/gotop.js"></script>
+	-->
+
+
+	<a class="icon-toc-toggle" href="javascript:void(0)" title="文章目录"></a>
+	<!--
+	<script src="/js/toc_aside_toggle.js"></script>
+	-->
+
+</div>
+<script src="/js/toc_aside_toggle.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

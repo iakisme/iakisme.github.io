@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>大二上短学期作业总结：校园导航 | 曲徑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="####1.问题描述&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;设计一个校园导航程序，为来访的客人提供住处查询服务。选取苦干（多于10个）个有代表性的景点抽象成一个无向带权图，以图中顶点表示校内景点，边上的权值表示两景点间的距离。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大二上短学期作业总结：校园导航">
+<meta property="og:url" content="http://yoursite.com/2015/03/10/project-review1/index.html">
+<meta property="og:site_name" content="曲徑">
+<meta property="og:description" content="####1.问题描述&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;设计一个校园导航程序，为来访的客人提供住处查询服务。选取苦干（多于10个）个有代表性的景点抽象成一个无向带权图，以图中顶点表示校内景点，边上的权值表示两景点间的距离。">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/ec235c5cgw1eoym89u72zj20ft0dcdgv.jpg">
+<meta property="og:updated_time" content="2015-03-10T16:00:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大二上短学期作业总结：校园导航">
+<meta name="twitter:description" content="####1.问题描述&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;设计一个校园导航程序，为来访的客人提供住处查询服务。选取苦干（多于10个）个有代表性的景点抽象成一个无向带权图，以图中顶点表示校内景点，边上的权值表示两景点间的距离。">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/ec235c5cgw1eoym89u72zj20ft0dcdgv.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">曲徑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-github-link" class="nav-icon" href="https://github.com/howiefh" title="Github" target="_blank"></a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" target="_blank"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-project-review1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2015/03/10/project-review1/" class="article-date">
+  <time datetime="2015-03-10T15:57:20.000Z" itemprop="datePublished">2015-03-10</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      大二上短学期作业总结：校园导航
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>Contents</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>####1.问题描述<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;设计一个校园导航程序，为来访的客人提供住处查询服务。<br>选取苦干（多于10个）个有代表性的景点抽象成一个无向带权图，以图中顶点表示校内景点，边上的权值表示两景点间的距离。<br><a id="more"></a></p>
+<p>####2.    具体功能要求<br>1）    学校景点介绍：由一个子函数实现，输出学校全部景点的信息，包括景点编号、名称及简介。<br>2）    查看浏览路线：根据用户输入的起始景点编号，求出从该景点到其他景点的最短路径线路及距离，要求用DIJKSTRA算法完成。<br>3）    查询景点间最短路径：两个景点间的最短路径，要求用FLOYD算法完成。<br>4）    景点信息查询：根据用户输入的编号，输出其相关信息。<br>5）    更改基本信息：新增景点，删除边，重建图等。<br>6）    查询景点间可行路径：显示所有符合长度限制（如路径长度不大于5）的所有路径。（可选做）<br>7）    打印图<br>8）    退出</p>
+<p>####3.概要设计</p>
+<p>######3.1“系统框架图”</p>
+<p><img src="http://ww2.sinaimg.cn/large/ec235c5cgw1eoym89u72zj20ft0dcdgv.jpg" alt="pic1"></p>
+<p>注：因为第一次接触一个软件的开发，没学过软件工程，对于框图的理解几乎为零，这个框图仅仅是为了便于理解整个软件的框架。</p>
+<p>#####3.2 开发思路，困难与解决<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;首先是平台选择，老师布置完作业以后，我在脑子里大概构思出了一个软件的框架。老师推荐的是C语言或者C++。我作为我们组的主要开发者，觉得不如用用刚学完的java语言，虽然swing在现在不常用，但是对于我们的任务来说还是绰绰有余。</p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;第一天晚上就开始着手先试试java swing界面的建立，主要当时短学期未开始，为了不坑队友，我便先试试水。一开始很傻，没有用可视化界面去建立swing，我来我想着不对劲，就是网上下载了swing builder。发现简直是神器，不用再手动setbounds 不一会，我们软件的雏形已经出现了。但是当时我遇到了一个问题，如何点击一个按钮，让对应功能的“界面”出现呢。这个问题困扰了我2小时左右，我不断的google 百度，但是我找不到合适的词去描述这个问题，但是在google寻找的过程中，我突然发现有个功能是setVisiable 不知道是不是我要的那个，于是我便去试了，把两个界面的大小位置完全设置成一样，点击按钮的时候当前界面不可见，所指界面可见，问题解决！！后面反着找了一些，swing里面好像就是用这个解决的，大喜。</p>
+<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;界面的问题解决以后，我的心事就放下一半了，至少不会坑队友了。那接下来考虑的是什么呢？算法。这两题的核心其实就是算法。我的水平有些菜，上完数据结构以后对于Dijkstra算法的理解仅仅在理论不能去裸写一个出来，网上百度一个靠谱的，复制粘贴，随意的设置了一个邻接表，可行。但是这个时候我发现，TMD邻接矩阵怎么办，图怎么存？存的问题，我一开始想的是存在一个二维数组里面就好了，需要的时候改就行了。但是，java是面向对象的语言，我每次点击按钮的时候就是new 一个新的对象出来，修改也只是在New出来的对象上面，不能永久保存。这个问题让我失眠了一个晚上，在后面一天洗澡的时候，我突然想到我可以用一个txt文件去保存，到时候读文件就好了。经过百度google，基本确定了这个方案是可行的，读行的时候把空格读出来，剩下的自动建立一个二维数组，这个算法也挺烦的，搞了半个小时才完成，好在都能用，也算是节约了时间。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <!-- 百度分享 Start -->
+	  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+	  <!-- 百度分享 End -->
+	  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/大作业总结/">大作业总结</a></li></ul>
+
+	  
+<span>
+Updated:<time datetime="2015-03-10T16:00:34.000Z" itemprop="dateModified">2015-03-11</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/11/termPlan1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          大二下学期计划
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/05/sjjg2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据结构笔记2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+</section>
+        
+          
+  <div id="toc" class="toc-aside">
+  <h2 class="toc-title">Contents</h2>
+  
+  </div>
+
+<aside id="sidebar">
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">作者</h3>
+  <ul class="widget about-me">
+    
+    <li><img class="author" title="About me" src="https://www.gravatar.com/avatar/b9b00e66c6b8a70f88c73cb6bdb06787?s=180" /></li>
+    
+    
+    <li>王开/Kai/在校大学生/科技阴谋论/半果粉/osx使用者</li>
+    
+  </ul>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/数据库/" style="font-size: 13px; color: #7dc3de">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/随笔/" style="font-size: 13px; color: #7dc3de">随笔</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">archive</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/09/28/LinkedList/">LinkedList</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/LinkedHashMap/">LinkedHashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/hashTable/">hashTable</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/28/hashMap/">hashMap</a>
+          </li>
+        
+          <li>
+            <a href="/2016/09/23/20160904/">挖财一面</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+<div class="widget-wrap">
+  <h3 class="widget-title">Links</h3>
+  <ul class="widget">
+    
+    <li><a href="http://yibo.iyiyun.com/js/yibo404/key/1" target="_BLANK">404 page</a></li>
+    
+  </ul>
+</div>
+
+
+  
+
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 kai<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and Theme by <a href="https://github.com/howiefh/hexo-theme-landscape-f" target="_blank" title="Landscape-F">Landscape-F</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+
+<!-- 多说公共JS代码 end -->
+
+<!-- 百度分享 start -->
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","douban","bdysc","sqq","qq","hi","baidu","huaban","youdao","sdo","mail","xg","diandian","fx","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<!-- 百度分享 end -->
+
+<!--
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+-->
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<div class="bottom-btn">
+
+	<a class="icon-gotop" href="javascript:void(0)" title="返回顶部"></a>
+	<script src="/js/gotop.js"></script>
+	<!--
+	<script src="/js/gotop.js"></script>
+	-->
+
+
+	<a class="icon-toc-toggle" href="javascript:void(0)" title="文章目录"></a>
+	<!--
+	<script src="/js/toc_aside_toggle.js"></script>
+	-->
+
+</div>
+<script src="/js/toc_aside_toggle.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
