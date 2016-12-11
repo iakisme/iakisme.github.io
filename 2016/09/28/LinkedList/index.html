@@ -5,20 +5,17 @@
   
   <title>LinkedList | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="LinkedListLinkedList &amp;lt;–AbstractSequentialList &amp;lt;–AbstractList&amp;lt;–List&amp;lt;–CollectionLinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。
-1、从源码中很明显可以看出，LinkedList的实现是基于双向循环链表的，且头结">
+  <meta name="description" content="LinkedListLinkedList &amp;lt;–AbstractSequentialList &amp;lt;–AbstractList&amp;lt;–List&amp;lt;–CollectionLinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LinkedList">
 <meta property="og:url" content="http://yoursite.com/2016/09/28/LinkedList/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="LinkedListLinkedList &amp;lt;–AbstractSequentialList &amp;lt;–AbstractList&amp;lt;–List&amp;lt;–CollectionLinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。
-1、从源码中很明显可以看出，LinkedList的实现是基于双向循环链表的，且头结">
+<meta property="og:description" content="LinkedListLinkedList &amp;lt;–AbstractSequentialList &amp;lt;–AbstractList&amp;lt;–List&amp;lt;–CollectionLinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。">
 <meta property="og:image" content="https://camo.githubusercontent.com/05a5d75761aeb1ddd3be617d569d31acc2d1db51/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313430363239313533303536313731">
-<meta property="og:updated_time" content="2016-09-28T14:39:12.000Z">
+<meta property="og:updated_time" content="2016-12-11T07:52:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LinkedList">
-<meta name="twitter:description" content="LinkedListLinkedList &amp;lt;–AbstractSequentialList &amp;lt;–AbstractList&amp;lt;–List&amp;lt;–CollectionLinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。
-1、从源码中很明显可以看出，LinkedList的实现是基于双向循环链表的，且头结">
+<meta name="twitter:description" content="LinkedListLinkedList &amp;lt;–AbstractSequentialList &amp;lt;–AbstractList&amp;lt;–List&amp;lt;–CollectionLinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。">
 <meta name="twitter:image" content="https://camo.githubusercontent.com/05a5d75761aeb1ddd3be617d569d31acc2d1db51/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313430363239313533303536313731">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
@@ -103,7 +100,7 @@
 		
 		</div>
 		
-        <p>LinkedList<br>LinkedList &lt;–AbstractSequentialList &lt;–AbstractList&lt;–List&lt;–Collection<br>LinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。</p>
+        <p>LinkedList<br>LinkedList &lt;–AbstractSequentialList &lt;–AbstractList&lt;–List&lt;–Collection<br>LinkedList是基于双向循环链表（从源码中可以很容易看出）实现的，除了可以当作链表来操作外，它还可以当作栈，队列和双端队列来使用。<br><a id="more"></a></p>
 <p>1、从源码中很明显可以看出，LinkedList的实现是基于双向循环链表的，且头结点中不存放数据，如下图;<br><img src="https://camo.githubusercontent.com/05a5d75761aeb1ddd3be617d569d31acc2d1db51/687474703a2f2f696d672e626c6f672e6373646e2e6e65742f3230313430363239313533303536313731" alt=""><br>2、注意两个不同的构造方法。无参构造方法直接建立一个仅包含head节点的空链表，包含Collection的构造方法，先调用无参构造方法建立一个空链表，然后将Collection中的数据加入到链表的尾部后面。<br>3、在查找和删除某元素时，源码中都划分为该元素为null和不为null两种情况来处理，LinkedList中允许元素为null。<br>5、注意源码中的Entry entry(int index)方法。该方法返回双向链表中指定位置处的节点，而链表中是没有下标索引的，要指定位置出的元素，就要遍历该链表，从源码的实现中，我们看到这里有一个加速动作。源码中先将index与长度size的一半比较，如果indexsize/2，就只从位置size往前遍历到位置index处。这样可以减少一部分不必要的遍历，从而提高一定的效率（实际上效率还是很低）。<br>6、注意链表类对应的数据结构Entry。如下;</p>
 <p>// 双向链表的节点所对应的数据结构。<br>// 包含3部分：上一节点，下一节点，当前节点值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">E</span>&gt; </span>&#123;    </div><div class="line">    <span class="comment">// 当前节点所包含的值    </span></div><div class="line">    E element;    </div><div class="line">    <span class="comment">// 下一个节点    </span></div><div class="line">    Entry&lt;E&gt; next;    </div><div class="line">    <span class="comment">// 上一个节点    </span></div><div class="line">    Entry&lt;E&gt; previous;    </div><div class="line">    </div><div class="line">    <span class="comment">/**   </span></div><div class="line">     * 链表节点的构造函数。   </div><div class="line">     * 参数说明：   </div><div class="line">     *   element  —— 节点所包含的数据   </div><div class="line">     *   next      —— 下一个节点   </div><div class="line">     *   previous —— 上一个节点   </div><div class="line">     */   </div><div class="line">    Entry(E element, Entry&lt;E&gt; next, Entry&lt;E&gt; previous) &#123;    </div><div class="line">        <span class="keyword">this</span>.element = element;    </div><div class="line">        <span class="keyword">this</span>.next = next;    </div><div class="line">        <span class="keyword">this</span>.previous = previous;    </div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
@@ -120,7 +117,7 @@
 
 	  
 <span>
-Updated:<time datetime="2016-09-28T14:39:12.000Z" itemprop="dateModified">2016-09-28</time>
+Updated:<time datetime="2016-12-11T07:52:36.000Z" itemprop="dateModified">2016-12-11</time>
 </span>
 
 
@@ -129,6 +126,15 @@ Updated:<time datetime="2016-09-28T14:39:12.000Z" itemprop="dateModified">2016-0
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/12/11/20161211/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          趣云的电话面试
+        
+      </div>
+    </a>
   
   
     <a href="/2016/09/28/LinkedHashMap/" id="article-nav-older" class="article-nav-link-wrap">
@@ -176,7 +182,7 @@ Updated:<time datetime="2016-09-28T14:39:12.000Z" itemprop="dateModified">2016-0
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -206,7 +212,7 @@ Updated:<time datetime="2016-09-28T14:39:12.000Z" itemprop="dateModified">2016-0
   <div class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -217,6 +223,10 @@ Updated:<time datetime="2016-09-28T14:39:12.000Z" itemprop="dateModified">2016-0
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/12/11/20161211/">趣云的电话面试</a>
+          </li>
         
           <li>
             <a href="/2016/09/28/LinkedList/">LinkedList</a>
@@ -232,10 +242,6 @@ Updated:<time datetime="2016-09-28T14:39:12.000Z" itemprop="dateModified">2016-0
         
           <li>
             <a href="/2016/09/28/hashMap/">hashMap</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/23/20160904/">挖财一面</a>
           </li>
         
       </ul>
