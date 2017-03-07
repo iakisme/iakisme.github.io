@@ -15,7 +15,7 @@
 <meta property="og:description" content="effective java 读书笔记
 金镝哥今天给我们做了第一次的培训和读书的分享，故结合自己的理解作一些读书笔记。
 引伸开来的内容：前端发展对开发、设计等的启示（容易实践、普及&amp;gt;&amp;gt;设计精良）， python map/reduce等高阶函数的使用，对一个集合进行操作(list comprehension)。java的缺点，不灵活，缺少佚名函数，到8才支持 Lambda表达式。看看cl">
-<meta property="og:updated_time" content="2017-03-07T14:44:06.000Z">
+<meta property="og:updated_time" content="2017-03-07T14:51:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="effective java 读书笔记">
 <meta name="twitter:description" content="effective java 读书笔记
@@ -114,17 +114,9 @@
 <p>2.遇到多个构造器时要考虑用构造器</p>
 <p>Builder 设计模式，属于 java 语言缺陷才特有的，可以对比参考 Python 的 **kwargs 传一个字典进去，return 的值也可以多返回值，自动解包。思考一门容易使用的语言需要什么特性</p>
 <p>3.用私有构造器或者枚举类型强化 Singleton 属性</p>
-<p>没什么好说的，推荐使用枚举 避免多次同步，没有并发问题。</p>
-<p><code>public enum Elvis{</code></p>
-<p><code>INSTANCE;</code></p>
-<p><code>public void leaveTheBuilding(){}</code></p>
-<p><code>}</code></p>
-<p>4.通过私有构造器强化不可实例化的能力</p>
-<p><code>public class UtilityClass{</code></p>
-<p><code>private UtilityClass(){</code></p>
-<p><code>throw new Error();</code></p>
-<p><code>}}</code></p>
-<p>``类似工具类会用这个，因为都是静态的不需要也不希望被实例化。自己写工具类是不必要的。java 8可以在 interface 里面写方法（默认方法）来实现。</p>
+<p>没什么好说的，推荐使用枚举 避免多次同步，没有并发问题。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Elvis&#123;</div><div class="line"> INSTANCE;</div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">leaveTheBuilding</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>4.通过私有构造器强化不可实例化的能力<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UtilityClass</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">private</span> <span class="title">UtilityClass</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> Error();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>类似工具类会用这个，因为都是静态的不需要也不希望被实例化。自己写工具类是不必要的。java 8可以在 interface 里面写方法（默认方法）来实现。</p>
 <p>5.避免创建不必要的对象</p>
 <p>value 和 Variable的区别。类似==和 equals 区别的方式。不可变的就是 value，==就可以。尽量有原生的不要用包装类。把类设计成不可变的(String)，完美解决并发问题。</p>
 
@@ -141,7 +133,7 @@
 
 	  
 <span>
-Updated:<time datetime="2017-03-07T14:44:06.000Z" itemprop="dateModified">2017-03-07</time>
+Updated:<time datetime="2017-03-07T14:51:58.000Z" itemprop="dateModified">2017-03-07</time>
 </span>
 
 
