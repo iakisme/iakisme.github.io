@@ -3,18 +3,84 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode爬坑之路（1） | 曲徑</title>
+  <title>什么是第一范式，第二范式，第三范式？ | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近又发现一个大坑 leedcode ，很多毕业生毕业之前都会把里面的题目刷一遍，以解决招聘时遇到的算法问题。正好，最近我们在学java和数据结构，观察leedcode中基本上都会有用到数据结构和算法，正好又可以用java实现，顺便了解一下java类的使用。那么多东西可以一起实践，真是太棒了。所以果断着">
+  <meta name="description" content="什么是第一范式，第二范式，第三范式？翻译理解 stackoverflow 上的回答
+第一范式：第一范式是所有普通表的基础，任何cell(单元，原子）在表中必须只包含一条信息，不能重复。
+第二，第三范式都是依赖主键的。
+第二范式：
+
+
+
+CourseID
+SemesterID
+#Places
+Course Name
+
+
+
+
+IT101
+2009-1
+100
+Programming
+
+
+IT101
+2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode爬坑之路（1）">
-<meta property="og:url" content="http://yoursite.com/2014/11/23/ReverseWordsinaString/index.html">
+<meta property="og:title" content="什么是第一范式，第二范式，第三范式？">
+<meta property="og:url" content="http://yoursite.com/2017/03/08/20170308/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近又发现一个大坑 leedcode ，很多毕业生毕业之前都会把里面的题目刷一遍，以解决招聘时遇到的算法问题。正好，最近我们在学java和数据结构，观察leedcode中基本上都会有用到数据结构和算法，正好又可以用java实现，顺便了解一下java类的使用。那么多东西可以一起实践，真是太棒了。所以果断着">
-<meta property="og:updated_time" content="2014-11-26T13:57:26.000Z">
+<meta property="og:description" content="什么是第一范式，第二范式，第三范式？翻译理解 stackoverflow 上的回答
+第一范式：第一范式是所有普通表的基础，任何cell(单元，原子）在表中必须只包含一条信息，不能重复。
+第二，第三范式都是依赖主键的。
+第二范式：
+
+
+
+CourseID
+SemesterID
+#Places
+Course Name
+
+
+
+
+IT101
+2009-1
+100
+Programming
+
+
+IT101
+2">
+<meta property="og:updated_time" content="2017-03-08T15:28:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode爬坑之路（1）">
-<meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近又发现一个大坑 leedcode ，很多毕业生毕业之前都会把里面的题目刷一遍，以解决招聘时遇到的算法问题。正好，最近我们在学java和数据结构，观察leedcode中基本上都会有用到数据结构和算法，正好又可以用java实现，顺便了解一下java类的使用。那么多东西可以一起实践，真是太棒了。所以果断着">
+<meta name="twitter:title" content="什么是第一范式，第二范式，第三范式？">
+<meta name="twitter:description" content="什么是第一范式，第二范式，第三范式？翻译理解 stackoverflow 上的回答
+第一范式：第一范式是所有普通表的基础，任何cell(单元，原子）在表中必须只包含一条信息，不能重复。
+第二，第三范式都是依赖主键的。
+第二范式：
+
+
+
+CourseID
+SemesterID
+#Places
+Course Name
+
+
+
+
+IT101
+2009-1
+100
+Programming
+
+
+IT101
+2">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -65,19 +131,15 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-ReverseWordsinaString" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-20170308" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/2014/11/23/ReverseWordsinaString/" class="article-date">
-  <time datetime="2014-11-23T09:34:46.000Z" itemprop="datePublished">2014-11-23</time>
+<a href="/2017/03/08/20170308/" class="article-date">
+  <time datetime="2017-03-08T15:28:23.000Z" itemprop="datePublished">2017-03-08</time>
 </a>
 
 
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/算法/">-算法</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -86,7 +148,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode爬坑之路（1）
+      什么是第一范式，第二范式，第三范式？
     </h1>
   
 
@@ -102,22 +164,105 @@
 		
 		</div>
 		
-        <p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;最近又发现一个大坑 leedcode ，很多毕业生毕业之前都会把里面的题目刷一遍，以解决招聘时遇到的算法问题。正好，最近我们在学java和数据结构，观察leedcode中基本上都会有用到数据结构和算法，正好又可以用java实现，顺便了解一下java类的使用。那么多东西可以一起实践，真是太棒了。所以果断着手开始做，我的方法一般是，先自己理解题目的意思，在草稿纸上写出自己的解决方法，再从<a href="http://blog.csdn.net/column/details/leetcode-solution.html" target="_blank" rel="external">别人的博客</a>上看C++的实现方法，看不懂就先把题目AC了，再看官方的实现答案，去理解，最后自己独立完成一边。所以，不是以AC题目为主，而是学习为主。</p>
-<p>PS:数据结构的绪论还没看完怎么办！！！周一必须看完更新！</p>
-<p>Here we go~!<br><a id="more"></a></p>
-<p>###1.Reverse Words in a String</p>
-<blockquote>
-<p>Given an input string, reverse the string word by word.<br>For example,<br>Given s = “the sky is blue”,<br>return “blue is sky the”.</p>
-</blockquote>
-<p>####【一开始的思路】</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;题目的意思很简单，就是把单词的顺序逆向输出。拿到题目我很快想起我似乎在C语言的练习题中遇到过，但是遗忘的很快，一下子居然无从下手，后来慢慢有了些许思路，用字符串数组的特效，检测到空格就记录。记录空格位置以后就把空格前的单词输出到另外一个字符串数组。</p>
-<p>看了C++的实现方法以后：可以利用栈实现，可是java如何实现栈?不会，C++的实现方法看不懂，但是大致的思路已经清楚，和我想象的有些出入但是大致相似。</p>
-<p>####【看了官方的解法】</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;官方的解法非常漂亮，17行代码就搞定，后面的注释就是我的理解。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> leedcode;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReverseWordsinaString</span> </span>&#123;</div><div class="line">	 <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">		   StringBuilder reversed = <span class="keyword">new</span> StringBuilder();<span class="comment">//创建srtingbuilder对象，可以理解成创建一个字符串？</span></div><div class="line">		   <span class="keyword">int</span> j = s.length();</div><div class="line">		   <span class="keyword">for</span> (<span class="keyword">int</span> i = s.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;   <span class="comment">//逆向</span></div><div class="line">		      <span class="keyword">if</span> (s.charAt(i) == <span class="string">' '</span>) &#123;</div><div class="line">		         j = i;   <span class="comment">//利用变量j来定位空格的位置</span></div><div class="line">		      &#125; </div><div class="line">		      <span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">0</span> || s.charAt(i - <span class="number">1</span>) == <span class="string">' '</span>) &#123;<span class="comment">//前方空格预警！或者是前方到头了预警</span></div><div class="line">		         <span class="keyword">if</span> (reversed.length() != <span class="number">0</span>) &#123;<span class="comment">//判断是不是输入的是不是只有一个空格</span></div><div class="line">		            reversed.append(<span class="string">' '</span>);    </div><div class="line">		         &#125;   <span class="comment">//如果遇到了空格就向字符串中添加一个空格</span></div><div class="line">		         reversed.append(s.substring(i, j));<span class="comment">//此时j还没有被改变，所以赶紧把字符串i-j的位置的单词输出</span></div><div class="line">		      &#125;</div><div class="line">		   &#125;</div><div class="line">		   <span class="keyword">return</span> reversed.toString();<span class="comment">//返回字符串</span></div><div class="line">		&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>####【关于java的收获】<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;知道了stringbuilder的使用情况，里面的append()方法是向这个字符串添加内容的。substring(i, j)方法的用法，可以截取字符串中的一段。</p>
-<p>####【算法的收获】<br>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;通过循环变量的逆序来实现逆序输出（实际上早就用过可是想不起来）。</p>
-<p>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;嗯，第一个题目就结束了，希望不是最后一个！</p>
+        <p>什么是第一范式，第二范式，第三范式？翻译理解 stackoverflow 上的回答</p>
+<p>第一范式：第一范式是所有普通表的基础，任何cell(单元，原子）在表中必须只包含一条信息，不能重复。</p>
+<p>第二，第三范式都是依赖主键的。</p>
+<p>第二范式：</p>
+<table>
+<thead>
+<tr>
+<th>CourseID</th>
+<th>SemesterID</th>
+<th>#Places</th>
+<th>Course Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT101</td>
+<td>2009-1</td>
+<td>100</td>
+<td>Programming</td>
+</tr>
+<tr>
+<td>IT101</td>
+<td>2009-2</td>
+<td>100</td>
+<td>Programming</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2009-1</td>
+<td>200</td>
+<td>Databases</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2010-1</td>
+<td>150</td>
+<td>Databases</td>
+</tr>
+<tr>
+<td>IT103</td>
+<td>2009-2</td>
+<td>120</td>
+<td>Web Design</td>
+</tr>
+</tbody>
+</table>
+<p>例子里的图就不是第二范式，因为CourseName 可以通过 CourseID来获取，所以表中的 CourseName 是重复的。不要冗余</p>
+<p>第三范式：</p>
+<table>
+<thead>
+<tr>
+<th>Course</th>
+<th>Semester</th>
+<th>#Places</th>
+<th>TeacherID</th>
+<th>TeacherName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT101</td>
+<td>2009-1</td>
+<td>100</td>
+<td>332</td>
+<td>Mr Jones</td>
+</tr>
+<tr>
+<td>IT101</td>
+<td>2009-2</td>
+<td>100</td>
+<td>332</td>
+<td>Mr Jones</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2009-1</td>
+<td>200</td>
+<td>495</td>
+<td>Mr Bentley</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2010-1</td>
+<td>150</td>
+<td>332</td>
+<td>Mr Jones</td>
+</tr>
+<tr>
+<td>IT103</td>
+<td>2009-2</td>
+<td>120</td>
+<td>242</td>
+<td>Mrs Smith</td>
+</tr>
+</tbody>
+</table>
+<p>在Course的表里又有了 TeacherID,显而易见 TeacherName是冗余的，去掉。如果一个表只剩下了 Key，那就是第三范式。</p>
+<p>The data depends on the key [1NF], the whole key [2NF] and nothing but the key [3NF].</p>
+<p>由第二范式可以引申出昨天那个变量和值的问题，第二范式希望数据是一个值而不是变量，你不是修改而是把他指向另外一个值。</p>
 
       
     </div>
@@ -128,11 +273,9 @@
 	  <!-- 百度分享 End -->
 	  
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-
 	  
 <span>
-Updated:<time datetime="2014-11-26T13:57:26.000Z" itemprop="dateModified">2014-11-26</time>
+Updated:<time datetime="2017-03-08T15:28:59.000Z" itemprop="dateModified">2017-03-08</time>
 </span>
 
 
@@ -142,19 +285,10 @@ Updated:<time datetime="2014-11-26T13:57:26.000Z" itemprop="dateModified">2014-1
     
 <nav id="article-nav">
   
-    <a href="/2014/11/24/MinStack/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          leetcode爬坑（2）&amp; 数据结构绪论结尾
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/11/18/sjjg1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/07/20170307/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">数据结构笔记1</div>
+      <div class="article-nav-title">effective java 读书笔记(1)</div>
     </a>
   
 </nav>

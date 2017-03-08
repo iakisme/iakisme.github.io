@@ -63,6 +63,167 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20170308" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2017/03/08/20170308/" class="article-date">
+  <time datetime="2017-03-08T15:28:23.000Z" itemprop="datePublished">2017-03-08</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/08/20170308/">什么是第一范式，第二范式，第三范式？</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>Contents</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>什么是第一范式，第二范式，第三范式？翻译理解 stackoverflow 上的回答</p>
+<p>第一范式：第一范式是所有普通表的基础，任何cell(单元，原子）在表中必须只包含一条信息，不能重复。</p>
+<p>第二，第三范式都是依赖主键的。</p>
+<p>第二范式：</p>
+<table>
+<thead>
+<tr>
+<th>CourseID</th>
+<th>SemesterID</th>
+<th>#Places</th>
+<th>Course Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT101</td>
+<td>2009-1</td>
+<td>100</td>
+<td>Programming</td>
+</tr>
+<tr>
+<td>IT101</td>
+<td>2009-2</td>
+<td>100</td>
+<td>Programming</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2009-1</td>
+<td>200</td>
+<td>Databases</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2010-1</td>
+<td>150</td>
+<td>Databases</td>
+</tr>
+<tr>
+<td>IT103</td>
+<td>2009-2</td>
+<td>120</td>
+<td>Web Design</td>
+</tr>
+</tbody>
+</table>
+<p>例子里的图就不是第二范式，因为CourseName 可以通过 CourseID来获取，所以表中的 CourseName 是重复的。不要冗余</p>
+<p>第三范式：</p>
+<table>
+<thead>
+<tr>
+<th>Course</th>
+<th>Semester</th>
+<th>#Places</th>
+<th>TeacherID</th>
+<th>TeacherName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT101</td>
+<td>2009-1</td>
+<td>100</td>
+<td>332</td>
+<td>Mr Jones</td>
+</tr>
+<tr>
+<td>IT101</td>
+<td>2009-2</td>
+<td>100</td>
+<td>332</td>
+<td>Mr Jones</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2009-1</td>
+<td>200</td>
+<td>495</td>
+<td>Mr Bentley</td>
+</tr>
+<tr>
+<td>IT102</td>
+<td>2010-1</td>
+<td>150</td>
+<td>332</td>
+<td>Mr Jones</td>
+</tr>
+<tr>
+<td>IT103</td>
+<td>2009-2</td>
+<td>120</td>
+<td>242</td>
+<td>Mrs Smith</td>
+</tr>
+</tbody>
+</table>
+<p>在Course的表里又有了 TeacherID,显而易见 TeacherName是冗余的，去掉。如果一个表只剩下了 Key，那就是第三范式。</p>
+<p>The data depends on the key [1NF], the whole key [2NF] and nothing but the key [3NF].</p>
+<p>由第二范式可以引申出昨天那个变量和值的问题，第二范式希望数据是一个值而不是变量，你不是修改而是把他指向另外一个值。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cj014dxhk0004uuzwzlvm7ck7" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
+      
+
+      
+	  
+      
+	  
+<span>
+Updated:<time datetime="2017-03-08T15:28:59.000Z" itemprop="dateModified">2017-03-08</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+
+  
     <article id="post-20170307" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -103,7 +264,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cj00bscek0003w7xmm5eqs0x6" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
+	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cj014dxhp0007uuzw37ud7sue" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
 金镝哥今天给我..." class="article-share-link">Share</a>
       
 
@@ -172,7 +333,7 @@ Updated:<time datetime="2017-03-08T02:08:27.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cj00bsceq0008w7xmxksfq0kq" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cj014dxhn0005uuzwe2vgswjp" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
       
 
       
@@ -233,7 +394,7 @@ Updated:<time datetime="2017-03-05T15:01:50.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cj00bsceo0006w7xmspbf846v" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cj014dxhr000auuzwd2gxk7tr" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
       
 
       
@@ -335,7 +496,7 @@ Updated:<time datetime="2017-01-27T18:49:44.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cj00bscel0004w7xm6y87g1w5" data_title="云趣的电话面试" data_summary="
+	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cj014dxhe0001uuzwoqdcmrgn" data_title="云趣的电话面试" data_summary="
 
 equals hashcode 的区别（用法）
 
@@ -398,7 +559,7 @@ Updated:<time datetime="2017-02-15T14:43:09.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cj00bscew000ew7xmfusjixpx" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cj014dxhw000duuzwjm07ir9o" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
       
 
       
@@ -461,7 +622,7 @@ Updated:<time datetime="2016-12-11T07:52:36.000Z" itemprop="dateModified">2016-1
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedHashMap/" data-id="cj00bsces000aw7xm6ffggm70" data_title="LinkedHashMap" data_summary="LinkedHashMap是HashMap的子类，与H..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedHashMap/" data-id="cj014dxhu000cuuzwrgabuu5d" data_title="LinkedHashMap" data_summary="LinkedHashMap是HashMap的子类，与H..." class="article-share-link">Share</a>
       
 
       
@@ -530,7 +691,7 @@ Updated:<time datetime="2016-12-11T07:52:22.000Z" itemprop="dateModified">2016-1
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/hashTable/" data-id="cj00bscf4000lw7xmgidus7x2" data_title="hashTable" data_summary="HashTable同样是基于哈希表实现的，同样每个元素..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/hashTable/" data-id="cj014dxi6000quuzwenwxiqnf" data_title="hashTable" data_summary="HashTable同样是基于哈希表实现的，同样每个元素..." class="article-share-link">Share</a>
       
 
       
@@ -591,7 +752,7 @@ Updated:<time datetime="2016-09-28T14:37:38.000Z" itemprop="dateModified">2016-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/hashMap/" data-id="cj00bscfa000tw7xma82hzzpl" data_title="hashMap" data_summary="Java集合类的图
+	  <a data-url="http://yoursite.com/2016/09/28/hashMap/" data-id="cj014dxi5000ouuzw3mkd33sx" data_title="hashMap" data_summary="Java集合类的图
 12345678910111213..." class="article-share-link">Share</a>
       
 
@@ -679,7 +840,7 @@ Updated:<time datetime="2016-09-28T14:37:51.000Z" itemprop="dateModified">2016-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/23/20160904/" data-id="cj00bscef0001w7xm8ztnt3s2" data_title="挖财一面" data_summary="
+	  <a data-url="http://yoursite.com/2016/09/23/20160904/" data-id="cj014dxhj0003uuzw0m06rqb0" data_title="挖财一面" data_summary="
 自我介绍 公司经历 业务了解
 
 
@@ -692,146 +853,6 @@ Updated:<time datetime="2016-09-28T14:37:51.000Z" itemprop="dateModified">2016-0
 	  
 <span>
 Updated:<time datetime="2016-09-12T15:05:54.000Z" itemprop="dateModified">2016-09-12</time>
-</span>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-<!-- 多说评论框 start -->
-
-<!-- 多说评论框 end -->
-
-  
-    <article id="post-resume" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/2016/03/08/resume/" class="article-date">
-  <time datetime="2016-03-08T03:50:59.000Z" itemprop="datePublished">2016-03-08</time>
-</a>
-
-
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/08/resume/">resume</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#联系方式"><span class="toc-number">1.</span> <span class="toc-text">联系方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#个人信息"><span class="toc-number"></span> <span class="toc-text">个人信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#工作经历"><span class="toc-number"></span> <span class="toc-text">工作经历</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#浙江立盛网络科技公司-（-2015年11月-至今-）"><span class="toc-number">1.</span> <span class="toc-text">浙江立盛网络科技公司 （ 2015年11月 ~ 至今 ）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#工程OA开发"><span class="toc-number">1.1.</span> <span class="toc-text">工程OA开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#某商店客户系统"><span class="toc-number">1.2.</span> <span class="toc-text">某商店客户系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他项目"><span class="toc-number">1.3.</span> <span class="toc-text">其他项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#作品"><span class="toc-number"></span> <span class="toc-text">作品</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#阅读过的书籍和开源代码"><span class="toc-number"></span> <span class="toc-text">阅读过的书籍和开源代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#致谢"><span class="toc-number"></span> <span class="toc-text">致谢</span></a>
-		
-		</div>
-		
-        <h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul>
-<li>手机：18395920740 </li>
-<li>Email：wangkaizjnu@foxmail.com</li>
-<li>QQ/微信号：494931023</li>
-</ul>
-<hr>
-<h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
-<li>王开/男/1994 </li>
-<li>本科(2017届大三)/浙江师范大学行知学院计算机科学与技术专业 </li>
-<li>技术博客：<a href="http://kai660740.github.io" target="_blank" rel="external">http://kai660740.github.io</a></li>
-<li>Github：<a href="https://github.com/kai660740" target="_blank" rel="external">https://github.com/kai660740</a></li>
-<li>期望职位：Java研发实习生</li>
-<li>期望城市：杭州</li>
-</ul>
-<hr>
-<p>#学习路线</p>
-<p>##Java<br>Java SE-&gt;servlet-&gt;jsp-&gt;jdbc-&gt;数据库小项目-&gt;MVC框架（Spring,mybatis,Hibernate）-&gt;研究过nio的使用-&gt;在项目中回顾Java的基础</p>
-<p>##其他技术</p>
-<p>TCP/IP、设计模式、浅层次的Python和Scala+Spark、数据库(Mysql/Redis)基础、玩过Android开发+Swift2.0、OS X、爬虫</p>
-<p>##计划学习</p>
-<p>Unix下Shell编程、数据库更加深入的了解，体会nosql（MongoDB、radis）的优点、深入学习Scala、写一个简单的框架(类似jfinal)或者稳定的中间件</p>
-<hr>
-<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h2 id="浙江立盛网络科技公司-（-2015年11月-至今-）"><a href="#浙江立盛网络科技公司-（-2015年11月-至今-）" class="headerlink" title="浙江立盛网络科技公司 （ 2015年11月 ~ 至今 ）"></a>浙江立盛网络科技公司 （ 2015年11月 ~ 至今 ）</h2><h3 id="工程OA开发"><a href="#工程OA开发" class="headerlink" title="工程OA开发"></a>工程OA开发</h3><ul>
-<li>短时间内熟悉JSF+Spring框架</li>
-<li>熟悉代码规范</li>
-<li>学习如何Debug</li>
-<li>接触到串口开发，阅读英文文档速度提升</li>
-<li>第一次大项目经历、了解Svn的使用</li>
-</ul>
-<h3 id="某商店客户系统"><a href="#某商店客户系统" class="headerlink" title="某商店客户系统"></a>某商店客户系统</h3><ul>
-<li>学习处理复杂的业务逻辑</li>
-<li>了解框架的运行原理</li>
-<li>代码持久性的重要</li>
-</ul>
-<h3 id="其他项目"><a href="#其他项目" class="headerlink" title="其他项目"></a>其他项目</h3><p>独立完成了公司产品主页的开发(www.dq56lm.com)解决了各个浏览器的兼容性问题。</p>
-<hr>
-<h1 id="作品"><a href="#作品" class="headerlink" title="作品"></a>作品</h1><ul>
-<li><a href="https://github.com/kai660740/GCOA" target="_blank" rel="external">工程管理系统</a></li>
-<li><a href="https://github.com/kai660740/XDXS" target="_blank" rel="external">客户系统</a></li>
-<li>大作业：<a href="http://kai660740.github.io/2015/03/10/project-review1/" target="_blank" rel="external">基于Dijkstra算法的校园导航</a>、<a href="http://kai660740.github.io/2015/06/15/购物系统总结/" target="_blank" rel="external">使用JDBC、JSP的数据库大作业</a>、 为了炒股写ajxs查看实时股票价格(暂时没上传，稍后会整理放到个人博客)</li>
-<li>斗鱼弹幕爬虫</li>
-</ul>
-<hr>
-<h1 id="阅读过的书籍和开源代码"><a href="#阅读过的书籍和开源代码" class="headerlink" title="阅读过的书籍和开源代码"></a>阅读过的书籍和开源代码</h1><p>##书籍</p>
-<ul>
-<li>算法竞赛入门经典 刘汝佳著(竞赛部分没看)</li>
-<li>Computer Networks A Top-Down Approach  Behrouz A.Forouzan</li>
-<li>深入分析Java Web内幕 许令波</li>
-<li>大话设计模式 程杰</li>
-<li>疯狂Java讲义 李刚(没有完整看，当字典查)</li>
-<li>Spring 源码深度解析(100页左右)</li>
-<li>JavaServer Faces核心编程</li>
-<li>MySQL Cookbook(翻了一边)</li>
-<li>Thinking in Java (当字典查)</li>
-</ul>
-<p>##开源项目与新技术</p>
-<ul>
-<li>了解并使用过jfinal</li>
-<li>关注Scala和Spark、函数式编程语言</li>
-<li>了解、实现Docker，nginx的部署和配置</li>
-<li>阅读过TeamTalk部分</li>
-<li>使用过swift2.0(写Iphone计算器)</li>
-</ul>
-<hr>
-<p>#技能清单</p>
-<ul>
-<li>开发语言: Java/Python(初学)</li>
-<li>Web框架: Struts2/Spring/JSF</li>
-<li>数据库相关: Mysql</li>
-<li>版本管理、文档和自动化工具：Svn/Markdown</li>
-<li>操作系统：OS X 常年使用</li>
-<li>编辑器、IDE：Sublime/Eclipse/MyEclipse</li>
-</ul>
-<h1 id="致谢"><a href="#致谢" class="headerlink" title="致谢"></a>致谢</h1><p>感谢您花时间阅读我的简历，期待能有机会和您共事。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-	  
-	  <a data-url="http://yoursite.com/2016/03/08/resume/" data-id="cj00bscff0014w7xmhf3isfmc" data_title="resume" data_summary="联系方式
-手机：18395920740 
-Email：..." class="article-share-link">Share</a>
-      
-
-      
-	  
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/简历/">简历</a></li></ul>
-
-	  
-<span>
-Updated:<time datetime="2016-03-11T12:44:26.000Z" itemprop="dateModified">2016-03-11</time>
 </span>
 
 
@@ -907,7 +928,7 @@ Updated:<time datetime="2016-03-11T12:44:26.000Z" itemprop="dateModified">2016-0
   <div class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -918,6 +939,10 @@ Updated:<time datetime="2016-03-11T12:44:26.000Z" itemprop="dateModified">2016-0
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/08/20170308/">什么是第一范式，第二范式，第三范式？</a>
+          </li>
         
           <li>
             <a href="/2017/03/07/20170307/">effective java 读书笔记(1)</a>
@@ -933,10 +958,6 @@ Updated:<time datetime="2016-03-11T12:44:26.000Z" itemprop="dateModified">2016-0
         
           <li>
             <a href="/2016/12/11/20161211/">云趣的电话面试</a>
-          </li>
-        
-          <li>
-            <a href="/2016/09/28/LinkedList/">LinkedList</a>
           </li>
         
       </ul>
