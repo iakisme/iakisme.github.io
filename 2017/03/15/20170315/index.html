@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MySQL学习笔记 | 曲徑</title>
+  <title>python 项目部署步骤 | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="###mysql笔记">
+  <meta name="description" content="1.安装 pyenv和 python
+1234567891011121314$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bashexport PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot; -&amp;gt;~/.bashrcexport">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL学习笔记">
-<meta property="og:url" content="http://yoursite.com/2015/05/09/learnmysql/index.html">
+<meta property="og:title" content="python 项目部署步骤">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/20170315/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="###mysql笔记">
-<meta property="og:updated_time" content="2015-06-15T09:53:33.000Z">
+<meta property="og:description" content="1.安装 pyenv和 python
+1234567891011121314$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bashexport PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot; -&amp;gt;~/.bashrcexport">
+<meta property="og:updated_time" content="2017-03-15T09:58:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL学习笔记">
-<meta name="twitter:description" content="###mysql笔记">
+<meta name="twitter:title" content="python 项目部署步骤">
+<meta name="twitter:description" content="1.安装 pyenv和 python
+1234567891011121314$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bashexport PYENV_ROOT=&amp;quot;$HOME/.pyenv&amp;quot; -&amp;gt;~/.bashrcexport">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -65,19 +68,15 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-learnmysql" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-20170315" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/2015/05/09/learnmysql/" class="article-date">
-  <time datetime="2015-05-09T06:07:01.000Z" itemprop="datePublished">2015-05-09</time>
+<a href="/2017/03/15/20170315/" class="article-date">
+  <time datetime="2017-03-15T09:55:28.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
 
 
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据库/">-数据库</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -86,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MySQL学习笔记
+      python 项目部署步骤
     </h1>
   
 
@@ -102,23 +101,14 @@
 		
 		</div>
 		
-        <p>###mysql笔记<br><a id="more"></a></p>
-<p>show database //查看当前存在的数据库</p>
-<p>create database test //创建新的数据库</p>
-<p>use test  //选择数据库</p>
-<p>show tables  //查看表</p>
-<p>drop database test //删除</p>
-<p>create table class(stu int, name varchar(20),age int,area varchar(20)); //创建表</p>
-<p>rename table class to newclass   //重命名</p>
-<p>drop table newclass //删表</p>
-<p>desc class //描述表</p>
-<p>insert into msg  (id,title,name,content  )values  (1,’aa’,’aa’,’sss’); //插入一列值</p>
-<p>updata msg set id =2, content = ‘ a’ where name =’l’ //修改值</p>
-<p>insert into msf (id,title,name,content) values (3,’3’,’aa’,’aa’) ,  (4,’4’,’aaa’,’a’) //插入多行</p>
-<p>delete from msg where name =.. //删除一行</p>
-<p>select * from msg; //查一个表</p>
-<p>select * from msg where id &gt;2 ; //</p>
-<p>select  id title from msg where id&gt;2;//条件查找</p>
+        <p>1.安装 pyenv和 python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</div><div class="line"></div><div class="line">export PYENV_ROOT=&quot;$HOME/.pyenv&quot; -&gt;~/.bashrc</div><div class="line">export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot; -&gt;~/.bashrc</div><div class="line">eval &quot;$(pyenv init -)&quot; -&gt;~/.bashrc</div><div class="line"></div><div class="line"></div><div class="line">$ sudo apt-get install libc6-dev gcc</div><div class="line">$ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev</div><div class="line"></div><div class="line">$ pyenv install PYTHON_VERSION</div><div class="line">$ pyenv rehash</div><div class="line">$ cd PATH_TO_PROJECT</div><div class="line">$ pyenv local PYTHON_VERSION</div></pre></td></tr></table></figure>
+<p>2.安装mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mysql-server</div><div class="line">$ sudo apt-get install libmysqlclient-dev</div><div class="line">mysql&gt; CREATE DATABASE databasename_in_django_settings</div></pre></td></tr></table></figure>
+<p>3.pip install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd path/to/project </div><div class="line">$ pip instll-r path/to/requirements.txt</div></pre></td></tr></table></figure>
+<p>4.run project</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python manage.py makemigrations</div><div class="line">$ python manage.py migrate</div><div class="line">$ python manage.py runserver</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -129,11 +119,9 @@
 	  <!-- 百度分享 End -->
 	  
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
-
 	  
 <span>
-更新日期:<time datetime="2015-06-15T09:53:33.000Z" itemprop="dateModified">2015-06-15</time>
+更新日期:<time datetime="2017-03-15T09:58:34.000Z" itemprop="dateModified">2017-03-15</time>
 </span>
 
 
@@ -143,19 +131,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/06/15/购物系统总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          数据库项目个人总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/03/11/termPlan1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/08/20170308/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">大二下学期计划</div>
+      <div class="article-nav-title">什么是第一范式，第二范式，第三范式？</div>
     </a>
   
 </nav>

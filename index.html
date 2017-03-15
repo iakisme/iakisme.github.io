@@ -63,6 +63,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20170315" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2017/03/15/20170315/" class="article-date">
+  <time datetime="2017-03-15T09:55:28.000Z" itemprop="datePublished">2017-03-15</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/15/20170315/">python 项目部署步骤</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>文章目录</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>1.安装 pyenv和 python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</div><div class="line"></div><div class="line">export PYENV_ROOT=&quot;$HOME/.pyenv&quot; -&gt;~/.bashrc</div><div class="line">export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot; -&gt;~/.bashrc</div><div class="line">eval &quot;$(pyenv init -)&quot; -&gt;~/.bashrc</div><div class="line"></div><div class="line"></div><div class="line">$ sudo apt-get install libc6-dev gcc</div><div class="line">$ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev</div><div class="line"></div><div class="line">$ pyenv install PYTHON_VERSION</div><div class="line">$ pyenv rehash</div><div class="line">$ cd PATH_TO_PROJECT</div><div class="line">$ pyenv local PYTHON_VERSION</div></pre></td></tr></table></figure>
+<p>2.安装mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mysql-server</div><div class="line">$ sudo apt-get install libmysqlclient-dev</div><div class="line">mysql&gt; CREATE DATABASE databasename_in_django_settings</div></pre></td></tr></table></figure>
+<p>3.pip install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd path/to/project </div><div class="line">$ pip instll-r path/to/requirements.txt</div></pre></td></tr></table></figure>
+<p>4.run project</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python manage.py makemigrations</div><div class="line">$ python manage.py migrate</div><div class="line">$ python manage.py runserver</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <a data-url="http://yoursite.com/2017/03/15/20170315/" data-id="cj0asnzo9000cjxxm39edt2o3" data_title="python 项目部署步骤" data_summary="1.安装 pyenv和 python
+12345678..." class="article-share-link">Share</a>
+      
+
+      
+	  
+      
+	  
+<span>
+更新日期:<time datetime="2017-03-15T09:58:34.000Z" itemprop="dateModified">2017-03-15</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+
+  
     <article id="post-20170308" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -200,7 +271,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cj02kj43o0008tgzw5wow39wn" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cj0asnzo4000ajxxm8i8i60a9" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
       
 
       
@@ -264,7 +335,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cj02kj43r000atgzwb7c2ltzl" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
+	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cj0asnzo00005jxxmq0ki0ooe" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
 金镝哥今天给我..." class="article-share-link">Share</a>
       
 
@@ -333,7 +404,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cj02kj43l0005tgzwwqylump5" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cj0asnznx0004jxxmt90uaamy" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
       
 
       
@@ -394,7 +465,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cj02kj43i0004tgzwtm79d15n" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cj0asnzo30008jxxm36c5txnw" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
       
 
       
@@ -496,7 +567,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cj02kj43h0003tgzwrnlazttr" data_title="云趣的电话面试" data_summary="
+	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cj0asnznw0003jxxm59071jbv" data_title="云趣的电话面试" data_summary="
 
 equals hashcode 的区别（用法）
 
@@ -559,7 +630,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cj02kj440000ftgzwnng9yh9g" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cj0asnzoe000hjxxm17g5zcub" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
       
 
       
@@ -622,7 +693,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedHashMap/" data-id="cj02kj43w000ctgzw1vt15fem" data_title="LinkedHashMap" data_summary="LinkedHashMap是HashMap的子类，与H..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedHashMap/" data-id="cj0asnzoc000fjxxm7biauv96" data_title="LinkedHashMap" data_summary="LinkedHashMap是HashMap的子类，与H..." class="article-share-link">Share</a>
       
 
       
@@ -691,7 +762,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/hashTable/" data-id="cj02kj44e000rtgzw5rmj7xgr" data_title="hashTable" data_summary="HashTable同样是基于哈希表实现的，同样每个元素..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/hashTable/" data-id="cj0asnzol000rjxxmwgmolvew" data_title="hashTable" data_summary="HashTable同样是基于哈希表实现的，同样每个元素..." class="article-share-link">Share</a>
       
 
       
@@ -752,7 +823,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/hashMap/" data-id="cj02kj44c000ptgzwu4w90t36" data_title="hashMap" data_summary="Java集合类的图
+	  <a data-url="http://yoursite.com/2016/09/28/hashMap/" data-id="cj0asnzos0011jxxmt87ks2rb" data_title="hashMap" data_summary="Java集合类的图
 12345678910111213..." class="article-share-link">Share</a>
       
 
@@ -764,95 +835,6 @@ equals hashcode 的区别（用法）
 	  
 <span>
 更新日期:<time datetime="2016-09-28T14:37:51.000Z" itemprop="dateModified">2016-09-28</time>
-</span>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-<!-- 多说评论框 start -->
-
-<!-- 多说评论框 end -->
-
-  
-    <article id="post-20160904" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/2016/09/23/20160904/" class="article-date">
-  <time datetime="2016-09-23T15:05:40.000Z" itemprop="datePublished">2016-09-23</time>
-</a>
-
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/面试/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/23/20160904/">挖财一面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
-		
-			
-		
-		</div>
-		
-        <ul>
-<li>自我介绍 公司经历 业务了解</li>
-</ul>
-<ul>
-<li>数据结构 链表/数组 </li>
-</ul>
-<ul>
-<li>算法 排序/查找 时间复杂度空间复杂度</li>
-</ul>
-<ul>
-<li>网络 三次握手 和 四次挥手 dns是什么</li>
-</ul>
-<ul>
-<li>Java中的集合 hashmap hash算法</li>
-</ul>
-<ul>
-<li>Spring的AOP和控制反转</li>
-</ul>
-<p>没有认真准备，一面被刷，以上</p>
-
-      
-    </div>
-    <footer class="article-footer">
-	  
-	  <a data-url="http://yoursite.com/2016/09/23/20160904/" data-id="cj02kj43b0001tgzw0z24rab1" data_title="挖财一面" data_summary="
-自我介绍 公司经历 业务了解
-
-
-数据结构 链表/数..." class="article-share-link">Share</a>
-      
-
-      
-	  
-      
-	  
-<span>
-更新日期:<time datetime="2016-09-12T15:05:54.000Z" itemprop="dateModified">2016-09-12</time>
 </span>
 
 
@@ -928,7 +910,7 @@ equals hashcode 的区别（用法）
   <div class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -939,6 +921,10 @@ equals hashcode 的区别（用法）
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/03/15/20170315/">python 项目部署步骤</a>
+          </li>
         
           <li>
             <a href="/2017/03/08/20170308/">什么是第一范式，第二范式，第三范式？</a>
@@ -954,10 +940,6 @@ equals hashcode 的区别（用法）
         
           <li>
             <a href="/2017/01/28/2017/">2016 学了啥</a>
-          </li>
-        
-          <li>
-            <a href="/2016/12/11/20161211/">云趣的电话面试</a>
           </li>
         
       </ul>
