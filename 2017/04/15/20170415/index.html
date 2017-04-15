@@ -3,18 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>数据结构笔记1 | 曲徑</title>
+  <title>理解和解决前后端分离出现的跨域问题 | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在学校里的数据结构课程上的很不令我满意，一是老师的讲课不够生动，二是教材很凌乱。在网上寻觅很久，发现了两处不错的网络课程，权当课堂的补充。">
+  <meta name="description" content="前后端分离的实践比较少，在写完接口，给前端时，前端说不能用，会有跨域问题，给我科普了 CORS，so 干错把跨域问题和解决的最佳实践了解清楚。
+为什么会出现跨域及判定跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源（域名，协议，端口）策略造成的，是浏览器对JavaScript施加的安全限制。 
+当前端调用处于不同域名或者端口的时候，就会出现跨域问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构笔记1">
-<meta property="og:url" content="http://yoursite.com/2014/11/18/sjjg1/index.html">
+<meta property="og:title" content="理解和解决前后端分离出现的跨域问题">
+<meta property="og:url" content="http://yoursite.com/2017/04/15/20170415/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="在学校里的数据结构课程上的很不令我满意，一是老师的讲课不够生动，二是教材很凌乱。在网上寻觅很久，发现了两处不错的网络课程，权当课堂的补充。">
-<meta property="og:updated_time" content="2014-11-17T17:08:09.000Z">
+<meta property="og:description" content="前后端分离的实践比较少，在写完接口，给前端时，前端说不能用，会有跨域问题，给我科普了 CORS，so 干错把跨域问题和解决的最佳实践了解清楚。
+为什么会出现跨域及判定跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源（域名，协议，端口）策略造成的，是浏览器对JavaScript施加的安全限制。 
+当前端调用处于不同域名或者端口的时候，就会出现跨域问题。">
+<meta property="og:updated_time" content="2017-04-15T07:04:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构笔记1">
-<meta name="twitter:description" content="在学校里的数据结构课程上的很不令我满意，一是老师的讲课不够生动，二是教材很凌乱。在网上寻觅很久，发现了两处不错的网络课程，权当课堂的补充。">
+<meta name="twitter:title" content="理解和解决前后端分离出现的跨域问题">
+<meta name="twitter:description" content="前后端分离的实践比较少，在写完接口，给前端时，前端说不能用，会有跨域问题，给我科普了 CORS，so 干错把跨域问题和解决的最佳实践了解清楚。
+为什么会出现跨域及判定跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源（域名，协议，端口）策略造成的，是浏览器对JavaScript施加的安全限制。 
+当前端调用处于不同域名或者端口的时候，就会出现跨域问题。">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -65,19 +71,15 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-sjjg1" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-20170415" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/2014/11/18/sjjg1/" class="article-date">
-  <time datetime="2014-11-17T16:16:00.000Z" itemprop="datePublished">2014-11-18</time>
+<a href="/2017/04/15/20170415/" class="article-date">
+  <time datetime="2017-04-15T06:26:39.000Z" itemprop="datePublished">2017-04-15</time>
 </a>
 
 
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/数据结构/">-数据结构</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -86,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据结构笔记1
+      理解和解决前后端分离出现的跨域问题
     </h1>
   
 
@@ -98,36 +100,23 @@
 		<div id="toc" class="toc-article">
 			<h2 class="toc-title"><span>文章目录</span></h2>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么会出现跨域及判定"><span class="toc-number">1.</span> <span class="toc-text">为什么会出现跨域及判定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决跨域的最佳实践"><span class="toc-number">2.</span> <span class="toc-text">解决跨域的最佳实践</span></a></li></ol>
 		
 		</div>
 		
-        <p>在学校里的数据结构课程上的很不令我满意，一是老师的讲课不够生动，二是教材很凌乱。在网上寻觅很久，发现了两处不错的网络课程，权当课堂的补充。<br><a id="more"></a></p>
-<p>第一个是<a href="http://study.163.com/curricula/cs.htm" target="_blank" rel="external">网易云课堂</a>，12月1日开课，我会在开课后跟进。</p>
-<p>第二个是我现在所学的<a href="https://www.xuetangx.com/courses/TsinghuaX/30240184X/2014_T2/info" target="_blank" rel="external">学堂在线</a>,课程已经过半。</p>
-<p>下面是我的课堂笔记。</p>
-<p>##第一章：绪论</p>
-<p>###1.级数</p>
-<p>从衡量算法好坏的尺度入手，利用 大O 符号  θ  符号  Ω符号，以此是上限和下限的意思，但是我们还是更加关注与大O符号。</p>
-<p>算数数级-&gt;末项平方同阶</p>
-<p>EX：1+2+3+…+n=O(n^2)</p>
-<p>幂-&gt;幂次+1</p>
-<p>EX：1^2+2^2+3^2+……+n^2=O(n^3)</p>
-<p>几何数级-&gt;与末项同阶</p>
-<p>EX：a^0+a^1+a^2+……+a^n=O(a^n)</p>
-<p>收敛-&gt;O(1)</p>
-<p>1+1/2+1/3+…+1/n = θ(log n)   调和级数</p>
-<p>log1+log2+log3+…+logn = log(n!) = θ(n logn)  对数级数</p>
-<p>###2.循环</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i=n ;i&lt; n;i++)</div><div class="line">   <span class="keyword">for</span>(j= l;j&lt;l ;j++)</div></pre></td></tr></table></figure>
-<p>控制变量若无耦合，则是算术数级O(n^2)</p>
-<p>i&lt;&lt;=1 等效与  i=i*2</p>
-<p>若有耦合，即j与i有联系，则为几何数级</p>
-<p>###3.正确性</p>
-<p>不变性：经过K次后，最大的K必须就位</p>
-<p>单调性：经过K次后，问题规模为n-k次</p>
-<p>经过K此后必须停止则为正确</p>
-<p>上周就那么多，1节课的内容，下周继续！keep moving!</p>
+        <p>前后端分离的实践比较少，在写完接口，给前端时，前端说不能用，会有跨域问题，给我科普了 CORS，so 干错把跨域问题和解决的最佳实践了解清楚。</p>
+<h2 id="为什么会出现跨域及判定"><a href="#为什么会出现跨域及判定" class="headerlink" title="为什么会出现跨域及判定"></a>为什么会出现跨域及判定</h2><p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源（域名，协议，端口）策略造成的，是浏览器对JavaScript施加的安全限制。 </p>
+<p>当前端调用处于不同域名或者端口的时候，就会出现跨域问题。<br><a id="more"></a><br>那么跨域问题是如何判定的呢？通过搜索和实验后得出以下步骤：</p>
+<ol>
+<li>浏览器先根据同源策略对前端页面和后台交互地址做匹配，若同源，则直接发送数据请求；若不同源，则发送跨域请求。</li>
+<li>服务器解析程序收到浏览器跨域请求后，根据自身配置返回对应文件头。若未配置过任何允许跨域，则文件头里不包含<code>Access-Control-Allow-origin</code>字段，若配置过域名，则返回<code>Access-Control-Allow-origin</code>+ <code>对应配置规则里的域名的方式</code>。</li>
+<li>浏览器根据接受到的http文件头里的<code>Access-Control-Allow-origin</code>字段做匹配，若无该字段，说明不允许跨域；若有该字段，则对字段内容和当前域名做比对，如果同源，则说明可以跨域，浏览器发送该请求；若不同源，则说明该域名不可跨域，不发送请求</li>
+</ol>
+<h2 id="解决跨域的最佳实践"><a href="#解决跨域的最佳实践" class="headerlink" title="解决跨域的最佳实践"></a>解决跨域的最佳实践</h2><p>解决跨域的一般方法有 jsonp，CORS(修改 header 头)，端口转发等，前两者需要重写服务器代码，session 也会丢失。</p>
+<p>有一种完美的解决方式就是端口转发。如果用前两者的方法，就必有多暴露出来的一个端口或者服务器 ip，如果只能使用一台服务器的一个端口进行部署时，jsonp 和 cors 就会失效。</p>
+<p>如下图的配置文件所示，其前端页面配置在8080端口，后端服务器配置在8000端口，Nginx将前端对以<a href="http://localhost:8080/api/为前缀的请求转发到http://localhost:8000" target="_blank" rel="external">http://localhost:8080/api/为前缀的请求转发到http://localhost:8000</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">server &#123;  </div><div class="line">	listen 8080;  </div><div class="line">	charset utf-8;  </div><div class="line">	location / &#123;  </div><div class="line">		root /home/ivan/Desktop/ProjectManagement/fontEnd;  </div><div class="line">	&#125;  </div><div class="line">	location ~ ^/api/&#123;  </div><div class="line">		proxy_pass http://localhost:8000;  </div><div class="line">		proxy_redirect off;  </div><div class="line">		proxy_set_header X-Real-IP  $remote_addr;  </div><div class="line">		proxy_set_header X-Forwarded-For$proxy_add_x_forwarded_for;  </div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>so，目前来看，nginx 还是部署前后端分离服务器时的最佳时间。开发环境中前端可以使用http-proxy-middleware的方式来解决跨域问题。</p>
 
       
     </div>
@@ -138,11 +127,9 @@
 	  <!-- 百度分享 End -->
 	  
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
 	  
 <span>
-更新日期:<time datetime="2014-11-17T17:08:09.000Z" itemprop="dateModified">2014-11-18</time>
+更新日期:<time datetime="2017-04-15T07:04:46.000Z" itemprop="dateModified">2017-04-15</time>
 </span>
 
 
@@ -152,19 +139,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/11/23/ReverseWordsinaString/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          leetcode爬坑之路（1）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/11/09/no-title/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/15/20170315/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">无题</div>
+      <div class="article-nav-title">python 项目部署步骤</div>
     </a>
   
 </nav>
@@ -182,7 +160,7 @@
           
   <div id="toc" class="toc-aside">
   <h2 class="toc-title">文章目录</h2>
-  
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么会出现跨域及判定"><span class="toc-number">1.</span> <span class="toc-text">为什么会出现跨域及判定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决跨域的最佳实践"><span class="toc-number">2.</span> <span class="toc-text">解决跨域的最佳实践</span></a></li></ol>
   </div>
 
 <aside id="sidebar">
