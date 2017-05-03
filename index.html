@@ -90,45 +90,38 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础知识"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Oracle-数据库与-Mysql-的架构区别："><span class="toc-number">1.1.</span> <span class="toc-text">Oracle 数据库与 Mysql 的架构区别：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是HINT："><span class="toc-number">1.2.</span> <span class="toc-text">什么是HINT：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RBO与CBO："><span class="toc-number">1.3.</span> <span class="toc-text">RBO与CBO：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提到的一些概念"><span class="toc-number">2.</span> <span class="toc-text">提到的一些概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感想"><span class="toc-number">3.</span> <span class="toc-text">感想</span></a></li></ol>
 		
 		</div>
 		
-        <p>基础知识</p>
-<p>因为以前对 SQL 的细节都不太熟悉，所以先搜索了一些最基础的信息：</p>
+        <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>因为以前对 SQL 的细节都不太熟悉，所以先搜索了一些最基础的信息：</p>
 <p>什么是 Oracle database: Oracle Database，又名Oracle RDBMS，甲骨文公司开发的关系型数据库。</p>
-<p>Oracle 数据库与 Mysql 的架构区别：</p>
-<p>1.Oracle</p>
-<pre><code>数据文件包括：控制文件、数据文件、重做日志文件、参数文件、归档文件、密码文件。这是根据文件功能进行划分，并且所以文件都是二进制编码后的文件，对数据库算法效率有极大的提高。由于有了文件管理的统一性，就可以对 SQL 执行过程中的解析和优化，指定统一的标准：RBO(基于规则的优化器)、CBO（基于成本的优化器）
-</code></pre><p>通过优化器的选择，以及无敌的 HINT 规则，给予了 SQL 优化极大的自由，对 CPU、内存、IO 资源进行方方面面的优化。</p>
+<h3 id="Oracle-数据库与-Mysql-的架构区别："><a href="#Oracle-数据库与-Mysql-的架构区别：" class="headerlink" title="Oracle 数据库与 Mysql 的架构区别："></a>Oracle 数据库与 Mysql 的架构区别：</h3><p>1.Oracle</p>
+<p>​    数据文件包括：控制文件、数据文件、重做日志文件、参数文件、归档文件、密码文件。这是根据文件功能进行划分，并且所以文件都是二进制编码后的文件，对数据库算法效率有极大的提高。由于有了文件管理的统一性，就可以对 SQL 执行过程中的解析和优化，指定统一的标准：RBO(基于规则的优化器)、CBO（基于成本的优化器）</p>
+<p>通过优化器的选择，以及无敌的 HINT 规则，给予了 SQL 优化极大的自由，对 CPU、内存、IO 资源进行方方面面的优化。</p>
 <p>2.Mysql</p>
-<pre><code>最大的一个特色，就是自由选择存储引擎。每一个表都是一个文件，都可以选择合适的存储引擎。常见的引擎有 InnoDB、MyISAM、NDBCluster 等。但由于这种开放插件式的存储引擎，比如要求数据库与引擎之间的送耦合关系。从而导致文件的一致性大大降低。再 SQL 执行优化方面，也就有着一些不可避免的瓶颈。再多表关联、子查询优化、统计函数等方面是软肋，而且只支持极简单的 HINT。
-</code></pre><p>什么是HINT：</p>
-<p>在大多数的数据库实现中，hint 是一种SQL标准的补充，去告诉数据库引擎如何去执行一条查询语句。比如，一个 hint 可以告诉数据库引擎是不是去用索引。</p>
-<p>RBO与CBO：</p>
-<p>RBO (Rule-Based Optimization)基于规则的优化、CBO(Cost-Based Optimization) 基于代价的优化。</p>
+<p>​    最大的一个特色，就是自由选择存储引擎。每一个表都是一个文件，都可以选择合适的存储引擎。常见的引擎有 InnoDB、MyISAM、NDBCluster 等。但由于这种开放插件式的存储引擎，比如要求数据库与引擎之间的送耦合关系。从而导致文件的一致性大大降低。再 SQL 执行优化方面，也就有着一些不可避免的瓶颈。再多表关联、子查询优化、统计函数等方面是软肋，而且只支持极简单的 HINT。</p>
+<h3 id="什么是HINT："><a href="#什么是HINT：" class="headerlink" title="什么是HINT："></a>什么是HINT：</h3><p>在大多数的数据库实现中，hint 是一种SQL标准的补充，去告诉数据库引擎如何去执行一条查询语句。比如，一个 hint 可以告诉数据库引擎是不是去用索引。</p>
+<h3 id="RBO与CBO："><a href="#RBO与CBO：" class="headerlink" title="RBO与CBO："></a>RBO与CBO：</h3><p>RBO (Rule-Based Optimization)基于规则的优化、CBO(Cost-Based Optimization) 基于代价的优化。</p>
 <p>在较早的 Oracle 版本中，Oracle 是采用基于规则的优化，比如在规则中，索引的优先级大于全表扫描，那在查询某张有索引的表的时候，就一定使用索引。简单粗暴，但是很多情况下就会不试用，因为规则太不灵活了，如果数据变了可能就不再适用。在 9i 版本出来的时候，Oracle 就推荐使用 CBO。</p>
 <p>CBO是一种比RBO更加合理、可靠的优化器，它是从ORACLE 8中开始引入，但到ORACLE 9i 中才逐渐成熟，在ORACLE 10g中完全取代RBO， CBO是计算各种可能“执行计划”的“代价”，即COST，从中选用COST最低的执行方案，作为实际运行方案。它依赖数据库对象的统计信息，统计信息的准确与否会影响CBO做出最优的选择。如果对一次执行SQL时发现涉及对象（表、索引等）没有被分析、统计过，那么ORACLE会采用一种叫做动态采样的技术，动态的收集表和索引上的一些数据信息。</p>
 <p>CBO优化器根据SQL语句生成一组可能被使用的执行计划，估算出每个执行计划的代价，并调用计划生成器（Plan Generator）生成执行计划，比较执行计划的代价，最终选择选择一个代价最小的执行计划。查询优化器由查询转换器（Query Transform）、代价估算器（Estimator）和计划生成器（Plan Generator）组成。</p>
-<p>提到的一些概念</p>
-<p>集群：share everything（缓存） , mysql 那种是 share nothing（mpp架构），Oracle RAC(Oracle Real Application Clusters)</p>
+<h2 id="提到的一些概念"><a href="#提到的一些概念" class="headerlink" title="提到的一些概念"></a>提到的一些概念</h2><p>集群：share everything（缓存） , mysql 那种是 share nothing（mpp架构），Oracle RAC(Oracle Real Application Clusters)</p>
 <p>如何判断有没有负载：顶级活动</p>
 <p>如何判断哪一句 SQL 需要做优化：TOP sql 的运行时间，CPU 占用率，这些数据 Oracle 都会记录再表中，不用自己去打点搜集，但是保存时间不会很长（一周），所以一些数据还是需要保存在监控系统的 PostgreSQL中（三个月）。</p>
 <p>如果做优化：并行执行的概念(hash分配，广播分配等等)…<a href="http://www.oracle.com/technetwork/cn/articles/database-performance/parallel-execution-2417440-zhs.pdf" target="_blank" rel="external">http://www.oracle.com/technetwork/cn/articles/database-performance/parallel-execution-2417440-zhs.pdf</a></p>
 <p>、设置很大的值来强制 RBO 不使用嵌套循环（估算值，实际值）</p>
 <p>db time 可能大于实际的时间，因为会有并行运算的存在。</p>
 <p>使用并行运算以后，最好的情况下时间会大于倍数的减少。</p>
-<p>感想</p>
-<p>理解到了为什么 mysql 安装只有几百 M,而 Oracle 需要几 G，其实是Oracle提供了很多方便监控数据库，优化 sql 查询的方法 等等等等。这次科普以后，后续会去补充一些 Oracle 数据库的基础知识和视频来继续探索 Oracle。</p>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>理解到了为什么 mysql 安装只有几百 M,而 Oracle 需要几 G，其实是Oracle提供了很多方便监控数据库，优化 sql 查询的方法 等等等等。这次科普以后，后续会去补充一些 Oracle 数据库的基础知识和视频来继续探索 Oracle。</p>
 
       
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cj28or7l8000fzhxmjr3npubp" data_title="Oracle 分享 记录" data_summary="基础知识
-因为以前对 SQL 的细节都不太熟悉，所以先..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cj28otagh000j0wxm89efwm5i" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
       
 
       
@@ -138,7 +131,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-05-03T07:53:06.000Z" itemprop="dateModified">2017-05-03</time>
+Updated:<time datetime="2017-05-03T07:54:42.000Z" itemprop="dateModified">2017-05-03</time>
 </span>
 
 
@@ -181,7 +174,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -199,7 +192,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cj28or7l6000czhxml9wkrmak" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cj28otagf000h0wxmybh9fq8e" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
       
 
       
@@ -207,7 +200,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-04-28</time>
+Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-04-28</time>
 </span>
 
 
@@ -260,7 +253,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/15/20170415/" data-id="cj28or7la000hzhxmadk93q7i" data_title="理解和解决前后端分离出现的跨域问题" data_summary="前后端分离的实践比较少，在写完接口，给前端时，前端说不..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/15/20170415/" data-id="cj28otagd000f0wxm3engka7v" data_title="理解和解决前后端分离出现的跨域问题" data_summary="前后端分离的实践比较少，在写完接口，给前端时，前端说不..." class="article-share-link">Share</a>
       
 
       
@@ -268,7 +261,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-04-15T07:04:46.000Z" itemprop="dateModified">2017-04-15</time>
+Updated:<time datetime="2017-04-15T07:04:46.000Z" itemprop="dateModified">2017-04-15</time>
 </span>
 
 
@@ -311,7 +304,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -330,7 +323,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/15/20170315/" data-id="cj28or7le000mzhxmjrm02j8n" data_title="python 项目部署步骤" data_summary="1.安装 pyenv和 python
+	  <a data-url="http://yoursite.com/2017/03/15/20170315/" data-id="cj28otag500080wxm157o39ch" data_title="python 项目部署步骤" data_summary="1.安装 pyenv和 python
 12345678..." class="article-share-link">Share</a>
       
 
@@ -339,7 +332,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-03-15T09:58:34.000Z" itemprop="dateModified">2017-03-15</time>
+Updated:<time datetime="2017-03-15T09:58:34.000Z" itemprop="dateModified">2017-03-15</time>
 </span>
 
 
@@ -382,7 +375,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -492,7 +485,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cj28or7l3000azhxmfjhemp11" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cj28otag7000a0wxmqq4izkgk" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
       
 
       
@@ -500,7 +493,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-03-08T15:28:59.000Z" itemprop="dateModified">2017-03-08</time>
+Updated:<time datetime="2017-03-08T15:28:59.000Z" itemprop="dateModified">2017-03-08</time>
 </span>
 
 
@@ -556,7 +549,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cj28or7kx0004zhxml6isvs7y" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
+	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cj28otagc000c0wxmui87aw29" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
 金镝哥今天给我..." class="article-share-link">Share</a>
       
 
@@ -567,7 +560,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-03-08T02:08:27.000Z" itemprop="dateModified">2017-03-08</time>
+Updated:<time datetime="2017-03-08T02:08:27.000Z" itemprop="dateModified">2017-03-08</time>
 </span>
 
 
@@ -610,7 +603,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -625,7 +618,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cj28or7l20008zhxm11bn1w3v" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cj28otag200050wxm6qvhl0qo" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
       
 
       
@@ -635,7 +628,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-03-05T15:01:50.000Z" itemprop="dateModified">2017-03-05</time>
+Updated:<time datetime="2017-03-05T15:01:50.000Z" itemprop="dateModified">2017-03-05</time>
 </span>
 
 
@@ -686,7 +679,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cj28or7kz0005zhxmzzqguuj7" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cj28otag000040wxmw4tfcrie" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
       
 
       
@@ -696,7 +689,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-01-27T18:49:44.000Z" itemprop="dateModified">2017-01-28</time>
+Updated:<time datetime="2017-01-27T18:49:44.000Z" itemprop="dateModified">2017-01-28</time>
 </span>
 
 
@@ -743,7 +736,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -788,7 +781,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cj28or7km0000zhxmsexmobc7" data_title="云趣的电话面试" data_summary="
+	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cj28otafz00030wxmod6rueeb" data_title="云趣的电话面试" data_summary="
 
 equals hashcode 的区别（用法）
 
@@ -800,7 +793,7 @@ equals hashcode 的区别（用法）
       
 	  
 <span>
-更新日期:<time datetime="2017-02-15T14:43:09.000Z" itemprop="dateModified">2017-02-15</time>
+Updated:<time datetime="2017-02-15T14:43:09.000Z" itemprop="dateModified">2017-02-15</time>
 </span>
 
 
@@ -851,7 +844,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cj28or7lh000qzhxm4yaju1ak" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cj28otagl000o0wxmm1qba18n" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
       
 
       
@@ -861,7 +854,7 @@ equals hashcode 的区别（用法）
 
 	  
 <span>
-更新日期:<time datetime="2016-12-11T07:52:36.000Z" itemprop="dateModified">2016-12-11</time>
+Updated:<time datetime="2016-12-11T07:52:36.000Z" itemprop="dateModified">2016-12-11</time>
 </span>
 
 
@@ -905,7 +898,7 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
@@ -915,7 +908,7 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
@@ -925,7 +918,7 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
     </div>
@@ -945,7 +938,7 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
