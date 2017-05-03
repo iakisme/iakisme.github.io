@@ -3,14 +3,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 数据结构 | 曲徑</title>
+  <title>Oracle 分享 记录 | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="曲徑">
-<meta property="og:url" content="http://yoursite.com/tags/数据结构/index.html">
+  <meta name="description" content="基础知识
+因为以前对 SQL 的细节都不太熟悉，所以先搜索了一些最基础的信息：
+什么是 Oracle database: Oracle Database，又名Oracle RDBMS，甲骨文公司开发的关系型数据库。
+Oracle 数据库与 Mysql 的架构区别：
+1.Oracle
+数据文件包括：控制文件、数据文件、重做日志文件、参数文件、归档文件、密码文件。这是根据文件功能进行划分，并且所以文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle 分享 记录">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/20170503/index.html">
 <meta property="og:site_name" content="曲徑">
+<meta property="og:description" content="基础知识
+因为以前对 SQL 的细节都不太熟悉，所以先搜索了一些最基础的信息：
+什么是 Oracle database: Oracle Database，又名Oracle RDBMS，甲骨文公司开发的关系型数据库。
+Oracle 数据库与 Mysql 的架构区别：
+1.Oracle
+数据文件包括：控制文件、数据文件、重做日志文件、参数文件、归档文件、密码文件。这是根据文件功能进行划分，并且所以文件">
+<meta property="og:updated_time" content="2017-05-03T07:53:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="曲徑">
+<meta name="twitter:title" content="Oracle 分享 记录">
+<meta name="twitter:description" content="基础知识
+因为以前对 SQL 的细节都不太熟悉，所以先搜索了一些最基础的信息：
+什么是 Oracle database: Oracle Database，又名Oracle RDBMS，甲骨文公司开发的关系型数据库。
+Oracle 数据库与 Mysql 的架构区别：
+1.Oracle
+数据文件包括：控制文件、数据文件、重做日志文件、参数文件、归档文件、密码文件。这是根据文件功能进行划分，并且所以文件">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -61,171 +80,113 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
+        <section id="main"><article id="post-20170503" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/2016/09/28/LinkedList/" class="archive-article-date">
-  <time datetime="2016-09-28T14:38:44.000Z" itemprop="datePublished">Sep 28</time>
+<a href="/2017/05/03/20170503/" class="article-date">
+  <time datetime="2017-05-03T07:51:48.000Z" itemprop="datePublished">2017-05-03</time>
 </a>
 
 
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/28/LinkedList/">LinkedList</a>
+    <h1 class="article-title" itemprop="name">
+      Oracle 分享 记录
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>文章目录</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>基础知识</p>
+<p>因为以前对 SQL 的细节都不太熟悉，所以先搜索了一些最基础的信息：</p>
+<p>什么是 Oracle database: Oracle Database，又名Oracle RDBMS，甲骨文公司开发的关系型数据库。</p>
+<p>Oracle 数据库与 Mysql 的架构区别：</p>
+<p>1.Oracle</p>
+<pre><code>数据文件包括：控制文件、数据文件、重做日志文件、参数文件、归档文件、密码文件。这是根据文件功能进行划分，并且所以文件都是二进制编码后的文件，对数据库算法效率有极大的提高。由于有了文件管理的统一性，就可以对 SQL 执行过程中的解析和优化，指定统一的标准：RBO(基于规则的优化器)、CBO（基于成本的优化器）
+</code></pre><p>通过优化器的选择，以及无敌的 HINT 规则，给予了 SQL 优化极大的自由，对 CPU、内存、IO 资源进行方方面面的优化。</p>
+<p>2.Mysql</p>
+<pre><code>最大的一个特色，就是自由选择存储引擎。每一个表都是一个文件，都可以选择合适的存储引擎。常见的引擎有 InnoDB、MyISAM、NDBCluster 等。但由于这种开放插件式的存储引擎，比如要求数据库与引擎之间的送耦合关系。从而导致文件的一致性大大降低。再 SQL 执行优化方面，也就有着一些不可避免的瓶颈。再多表关联、子查询优化、统计函数等方面是软肋，而且只支持极简单的 HINT。
+</code></pre><p>什么是HINT：</p>
+<p>在大多数的数据库实现中，hint 是一种SQL标准的补充，去告诉数据库引擎如何去执行一条查询语句。比如，一个 hint 可以告诉数据库引擎是不是去用索引。</p>
+<p>RBO与CBO：</p>
+<p>RBO (Rule-Based Optimization)基于规则的优化、CBO(Cost-Based Optimization) 基于代价的优化。</p>
+<p>在较早的 Oracle 版本中，Oracle 是采用基于规则的优化，比如在规则中，索引的优先级大于全表扫描，那在查询某张有索引的表的时候，就一定使用索引。简单粗暴，但是很多情况下就会不试用，因为规则太不灵活了，如果数据变了可能就不再适用。在 9i 版本出来的时候，Oracle 就推荐使用 CBO。</p>
+<p>CBO是一种比RBO更加合理、可靠的优化器，它是从ORACLE 8中开始引入，但到ORACLE 9i 中才逐渐成熟，在ORACLE 10g中完全取代RBO， CBO是计算各种可能“执行计划”的“代价”，即COST，从中选用COST最低的执行方案，作为实际运行方案。它依赖数据库对象的统计信息，统计信息的准确与否会影响CBO做出最优的选择。如果对一次执行SQL时发现涉及对象（表、索引等）没有被分析、统计过，那么ORACLE会采用一种叫做动态采样的技术，动态的收集表和索引上的一些数据信息。</p>
+<p>CBO优化器根据SQL语句生成一组可能被使用的执行计划，估算出每个执行计划的代价，并调用计划生成器（Plan Generator）生成执行计划，比较执行计划的代价，最终选择选择一个代价最小的执行计划。查询优化器由查询转换器（Query Transform）、代价估算器（Estimator）和计划生成器（Plan Generator）组成。</p>
+<p>提到的一些概念</p>
+<p>集群：share everything（缓存） , mysql 那种是 share nothing（mpp架构），Oracle RAC(Oracle Real Application Clusters)</p>
+<p>如何判断有没有负载：顶级活动</p>
+<p>如何判断哪一句 SQL 需要做优化：TOP sql 的运行时间，CPU 占用率，这些数据 Oracle 都会记录再表中，不用自己去打点搜集，但是保存时间不会很长（一周），所以一些数据还是需要保存在监控系统的 PostgreSQL中（三个月）。</p>
+<p>如果做优化：并行执行的概念(hash分配，广播分配等等)…<a href="http://www.oracle.com/technetwork/cn/articles/database-performance/parallel-execution-2417440-zhs.pdf" target="_blank" rel="external">http://www.oracle.com/technetwork/cn/articles/database-performance/parallel-execution-2417440-zhs.pdf</a></p>
+<p>、设置很大的值来强制 RBO 不使用嵌套循环（估算值，实际值）</p>
+<p>db time 可能大于实际的时间，因为会有并行运算的存在。</p>
+<p>使用并行运算以后，最好的情况下时间会大于倍数的减少。</p>
+<p>感想</p>
+<p>理解到了为什么 mysql 安装只有几百 M,而 Oracle 需要几 G，其实是Oracle提供了很多方便监控数据库，优化 sql 查询的方法 等等等等。这次科普以后，后续会去补充一些 Oracle 数据库的基础知识和视频来继续探索 Oracle。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <!-- 百度分享 Start -->
+	  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+	  <!-- 百度分享 End -->
+	  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+	  
+<span>
+更新日期:<time datetime="2017-05-03T07:53:06.000Z" itemprop="dateModified">2017-05-03</time>
+</span>
+
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/28/20170428/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决 image not found 问题</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/2016/09/28/LinkedHashMap/" class="archive-article-date">
-  <time datetime="2016-09-28T14:38:08.000Z" itemprop="datePublished">Sep 28</time>
-</a>
 
 
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/28/LinkedHashMap/">LinkedHashMap</a>
-    </h1>
-  
+<!-- 多说评论框 start -->
 
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/2016/09/28/hashTable/" class="archive-article-date">
-  <time datetime="2016-09-28T14:36:43.000Z" itemprop="datePublished">Sep 28</time>
-</a>
-
-
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/28/hashTable/">hashTable</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/2016/09/28/hashMap/" class="archive-article-date">
-  <time datetime="2016-09-28T14:35:29.000Z" itemprop="datePublished">Sep 28</time>
-</a>
-
-
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/28/hashMap/">hashMap</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/2014/12/10/ReverseInteger/" class="archive-article-date">
-  <time datetime="2014-12-10T11:20:09.000Z" itemprop="datePublished">Dec 10</time>
-</a>
-
-
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/12/10/ReverseInteger/">leetcode爬坑(4)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-<a href="/2014/11/18/sjjg1/" class="archive-article-date">
-  <time datetime="2014-11-17T16:16:00.000Z" itemprop="datePublished">Nov 18</time>
-</a>
-
-
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/11/18/sjjg1/">数据结构笔记1</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
+<!-- 多说评论框 end -->
 </section>
         
           
+  <div id="toc" class="toc-aside">
+  <h2 class="toc-title">文章目录</h2>
+  
+  </div>
+
 <aside id="sidebar">
 
   
@@ -350,6 +311,8 @@
 
 <!-- 百度分享 start -->
 
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","douban","bdysc","sqq","qq","hi","baidu","huaban","youdao","sdo","mail","xg","diandian","fx","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 <!-- 百度分享 end -->
 
 <!--
@@ -371,6 +334,11 @@
 	<script src="/js/gotop.js"></script>
 	-->
 
+
+	<a class="icon-toc-toggle" href="javascript:void(0)" title="文章目录"></a>
+	<!--
+	<script src="/js/toc_aside_toggle.js"></script>
+	-->
 
 </div>
 <script src="/js/toc_aside_toggle.js"></script>
