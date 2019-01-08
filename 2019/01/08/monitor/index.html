@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Django 2.0 升级记 | 曲徑</title>
+  <title>监控系统整理和体系化监控思考 | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。">
+  <meta name="description" content="监控系统整理和体系化监控思考监控是 Devops 中不可或缺的一环，也是运维工作，处理问题排查问题的重要工具，几乎天天会用到。
+在房多多现有的监控实践中，我们总是会发现出现一个问题后，会很难去真正排插出问题所在及影响范围，经常需要在各个监控程序之间切换来找到联系；在系统崩溃前，也没有预警来提示风险；在有规律的大流量来临前，没有相关提示要求扩容。
+房多多的监控软件基本是完善的，总结整理如下：
+基础监">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django 2.0 升级记">
-<meta property="og:url" content="http://yoursite.com/2018/01/03/django2-0/index.html">
+<meta property="og:title" content="监控系统整理和体系化监控思考">
+<meta property="og:url" content="http://yoursite.com/2019/01/08/monitor/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。">
-<meta property="og:updated_time" content="2018-02-19T16:17:00.737Z">
+<meta property="og:description" content="监控系统整理和体系化监控思考监控是 Devops 中不可或缺的一环，也是运维工作，处理问题排查问题的重要工具，几乎天天会用到。
+在房多多现有的监控实践中，我们总是会发现出现一个问题后，会很难去真正排插出问题所在及影响范围，经常需要在各个监控程序之间切换来找到联系；在系统崩溃前，也没有预警来提示风险；在有规律的大流量来临前，没有相关提示要求扩容。
+房多多的监控软件基本是完善的，总结整理如下：
+基础监">
+<meta property="og:updated_time" content="2019-01-08T15:09:31.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django 2.0 升级记">
-<meta name="twitter:description" content="看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。">
+<meta name="twitter:title" content="监控系统整理和体系化监控思考">
+<meta name="twitter:description" content="监控系统整理和体系化监控思考监控是 Devops 中不可或缺的一环，也是运维工作，处理问题排查问题的重要工具，几乎天天会用到。
+在房多多现有的监控实践中，我们总是会发现出现一个问题后，会很难去真正排插出问题所在及影响范围，经常需要在各个监控程序之间切换来找到联系；在系统崩溃前，也没有预警来提示风险；在有规律的大流量来临前，没有相关提示要求扩容。
+房多多的监控软件基本是完善的，总结整理如下：
+基础监">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -65,11 +74,11 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-django2-0" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-monitor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
-<a href="/2018/01/03/django2-0/" class="article-date">
-  <time datetime="2018-01-03T03:54:41.000Z" itemprop="datePublished">2018-01-03</time>
+<a href="/2019/01/08/monitor/" class="article-date">
+  <time datetime="2019-01-08T15:08:13.000Z" itemprop="datePublished">2019-01-08</time>
 </a>
 
 
@@ -82,7 +91,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Django 2.0 升级记
+      监控系统整理和体系化监控思考
     </h1>
   
 
@@ -94,25 +103,52 @@
 		<div id="toc" class="toc-article">
 			<h2 class="toc-title"><span>Contents</span></h2>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#监控系统整理和体系化监控思考"><span class="toc-number">1.</span> <span class="toc-text">监控系统整理和体系化监控思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法论"><span class="toc-number">1.1.</span> <span class="toc-text">方法论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从产品角度看监控"><span class="toc-number">1.2.</span> <span class="toc-text">从产品角度看监控</span></a></li></ol></li></ol>
 		
 		</div>
 		
-        <p>看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。<br><a id="more"></a></p>
-<p>首先</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install django==2.0.1</div></pre></td></tr></table></figure>
-<p>然后依旧是 runserver，马上出现了错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  File &quot;/Users/wangkai/Desktop/workspace/hawkeye-v2/restful/hawkeye/authx/models.py&quot;, line 64, in User</div><div class="line">    owner = models.ForeignKey(&apos;User&apos;, null=True, blank=True)</div><div class="line">TypeError: __init__() missing 1 required positional argument: &apos;on_delete&apos;</div></pre></td></tr></table></figure>
-<p>看了官方的说明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The on_delete argument for ForeignKey and OneToOneField is now required in models and migrations. Consider squashing migrations so that you have fewer of them to update.</div></pre></td></tr></table></figure>
-<p>补全了 on_delete，然后来到了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">raise ImproperlyConfigured(&quot;Cannot import channel routing %r: %s&quot; % (routing, e))</div><div class="line">django.core.exceptions.ImproperlyConfigured: Cannot import channel routing &apos;hawkeye.routing.channel_routing&apos;: No module named &apos;django.core.urlresolvers&apos;</div></pre></td></tr></table></figure>
-<p>升级djangorestframework:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install djangorestframework==3.7.7</div></pre></td></tr></table></figure>
-<p>解决了一些升级djangorestframework后出现的引用问题</p>
-<p>然后修改 各种urls.py，不过似乎正则 url 的方式还是支持的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">old:</div><div class="line">url(r&apos;^api/$&apos;, include(&apos;api.urls&apos;, namespace=&apos;api&apos;)),</div><div class="line">new:</div><div class="line">url(&apos;api/&apos;, include(&apos;api.urls&apos;)),</div></pre></td></tr></table></figure>
-<p>ok，升级到此结束，接下来就开始测试踩坑。</p>
+        <h1 id="监控系统整理和体系化监控思考"><a href="#监控系统整理和体系化监控思考" class="headerlink" title="监控系统整理和体系化监控思考"></a>监控系统整理和体系化监控思考</h1><p>监控是 Devops 中不可或缺的一环，也是运维工作，处理问题排查问题的重要工具，几乎天天会用到。</p>
+<p>在房多多现有的监控实践中，我们总是会发现出现一个问题后，会很难去真正排插出问题所在及影响范围，经常需要在各个监控程序之间切换来找到联系；在系统崩溃前，也没有预警来提示风险；在有规律的大流量来临前，没有相关提示要求扩容。</p>
+<p>房多多的监控软件基本是完善的，总结整理如下：</p>
+<p>基础监控：</p>
+<p>​    数据库监控：zabbix</p>
+<p>​    网络设备监控：zabbix</p>
+<p>​    机器资源监控：promethus node_exporter</p>
+<p>​    主机硬件监控：promethus node_exporter,zabbix</p>
+<p>​    ping 监控：promethus world_ping</p>
+<p>​    dns 监控：promethus world_ping</p>
+<p>​    OS 性能：</p>
+<p>业务监控：</p>
+<p>​    端口监控：promethus consul_exporter</p>
+<p>​    HTTP 服务拨测：promethus blackbox</p>
+<p>​    用户主观反馈：</p>
+<p>​    用户访问质量：ELK APM</p>
+<p>​    调用关系监控：ELK APM, PINGPOINT</p>
+<p>数据利用：</p>
+<p>​    告警分级：promethus alertmanager、zabbix 告警</p>
+<p>​    告警关联收敛：</p>
+<p>​    故障自愈：</p>
+<p>​    审计、报表：</p>
+<h2 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h2><p>想要洞悉监控，应该先理清一些概念。</p>
+<p>监控的定义：通过技术手段发现服务异常，持续优化业务可用性与用户体验。</p>
+<p>监控的方式：</p>
+<p>​    主动 程序埋点。</p>
+<p>​    被动，从外部观察，黑盒检测。</p>
+<p>​    旁路，与程序逻辑无关，对口碑和服务质量进行监控。</p>
+<p>监控的类型：</p>
+<p>​    基础监控：IAAS 层（服务器，网络，系统指标，硬盘等）</p>
+<p>​    业务监控：</p>
+<p>​        服务端监控：服务调用链监控</p>
+<p>​        客户端监控：APP，网站等直接与用户接触</p>
+<p>监控的实现原则：<br>​    指标全面，覆盖所有监控类型。</p>
+<p>​    部署容易，轻，稳定性高，侵入性小。</p>
+<p>​    智能分析、收敛，监控对象收敛。</p>
+<p>监控的本质：</p>
+<p>​    运维、开发、测试这三个角色应该视角统一，共同保证可靠性-&gt;可用性-&gt;用户体验。</p>
+<p>监控的目的：</p>
+<p>​    持续优化业务服务质量，并建设质量体系。</p>
+<h2 id="从产品角度看监控"><a href="#从产品角度看监控" class="headerlink" title="从产品角度看监控"></a>从产品角度看监控</h2><p>当我们站在使用者去开发监控时，我们会下意识的去针对缺失的监控软件进行补全，这可以称之为点。那么让我们换一个角度，当我们去用建设者这个视角去看监控是怎么样的呢，我想到的是抽象，在抽象的基础上去构建功能。那么一个业务监控应该如何抽象呢？</p>
+<p>​…​    </p>
 
       
     </div>
@@ -123,11 +159,11 @@
 	  <!-- 百度分享 End -->
 	  
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li></ul>
 
 	  
 <span>
-Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-02-20</time>
+Updated:<time datetime="2019-01-08T15:09:31.606Z" itemprop="dateModified">2019-01-08</time>
 </span>
 
 
@@ -137,19 +173,10 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
     
 <nav id="article-nav">
   
-    <a href="/2018/02/20/2018/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2017总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/10/10/git/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/16/iptables/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git</div>
+      <div class="article-nav-title">iptables</div>
     </a>
   
 </nav>
@@ -167,7 +194,7 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
           
   <div id="toc" class="toc-aside">
   <h2 class="toc-title">Contents</h2>
-  
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#监控系统整理和体系化监控思考"><span class="toc-number">1.</span> <span class="toc-text">监控系统整理和体系化监控思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法论"><span class="toc-number">1.1.</span> <span class="toc-text">方法论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从产品角度看监控"><span class="toc-number">1.2.</span> <span class="toc-text">从产品角度看监控</span></a></li></ol></li></ol>
   </div>
 
 <aside id="sidebar">

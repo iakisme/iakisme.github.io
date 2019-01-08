@@ -63,6 +63,77 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-20170315" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2017/03/15/20170315/" class="article-date">
+  <time datetime="2017-03-15T09:55:28.000Z" itemprop="datePublished">2017-03-15</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/15/20170315/">python 项目部署步骤</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>Contents</span></h2>
+		
+			
+		
+		</div>
+		
+        <p>1.安装 pyenv和 python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</div><div class="line"></div><div class="line">export PYENV_ROOT=&quot;$HOME/.pyenv&quot; -&gt;~/.bashrc</div><div class="line">export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot; -&gt;~/.bashrc</div><div class="line">eval &quot;$(pyenv init -)&quot; -&gt;~/.bashrc</div><div class="line"></div><div class="line"></div><div class="line">$ sudo apt-get install libc6-dev gcc</div><div class="line">$ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev</div><div class="line"></div><div class="line">$ pyenv install PYTHON_VERSION</div><div class="line">$ pyenv rehash</div><div class="line">$ cd PATH_TO_PROJECT</div><div class="line">$ pyenv local PYTHON_VERSION</div></pre></td></tr></table></figure>
+<p>2.安装mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mysql-server</div><div class="line">$ sudo apt-get install libmysqlclient-dev</div><div class="line">mysql&gt; CREATE DATABASE databasename_in_django_settings</div></pre></td></tr></table></figure>
+<p>3.pip install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd path/to/project </div><div class="line">$ pip instll-r path/to/requirements.txt</div></pre></td></tr></table></figure>
+<p>4.run project</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python manage.py makemigrations</div><div class="line">$ python manage.py migrate</div><div class="line">$ python manage.py runserver</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <a data-url="http://yoursite.com/2017/03/15/20170315/" data-id="cjqnw5cmh000cthzwghrqcv7s" data_title="python 项目部署步骤" data_summary="1.安装 pyenv和 python
+12345678..." class="article-share-link">Share</a>
+      
+
+      
+	  
+      
+	  
+<span>
+Updated:<time datetime="2017-03-15T09:58:34.000Z" itemprop="dateModified">2017-03-15</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+
+  
     <article id="post-20170308" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -90,7 +161,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -200,7 +271,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cjm6h8mee000aa7zwker9v2gr" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/08/20170308/" data-id="cjqnw5cmb0008thzwxe0gjypr" data_title="什么是第一范式，第二范式，第三范式？" data_summary="什么是第一范式，第二范式，第三范式？翻译理解 stac..." class="article-share-link">Share</a>
       
 
       
@@ -208,7 +279,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-03-08T15:28:59.000Z" itemprop="dateModified">2017-03-08</time>
+Updated:<time datetime="2017-03-08T15:28:59.000Z" itemprop="dateModified">2017-03-08</time>
 </span>
 
 
@@ -264,7 +335,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cjm6h8mec0008a7zwdji47mzg" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
+	  <a data-url="http://yoursite.com/2017/03/07/20170307/" data-id="cjqnw5cme000athzwxab6nl6e" data_title="effective java 读书笔记(1)" data_summary="effective java 读书笔记
 金镝哥今天给我..." class="article-share-link">Share</a>
       
 
@@ -275,7 +346,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-03-08T02:08:27.000Z" itemprop="dateModified">2017-03-08</time>
+Updated:<time datetime="2017-03-08T02:08:27.000Z" itemprop="dateModified">2017-03-08</time>
 </span>
 
 
@@ -318,7 +389,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -333,7 +404,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cjm6h8me90005a7zwsdl7gcta" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/03/05/20170305/" data-id="cjqnw5cm90005thzw7u9w5wwo" data_title="漫长的白日梦-浙大万朋工作总结与新的开始" data_summary="当每一次面试，在等电梯的时候，我总是会想，如果能进这个..." class="article-share-link">Share</a>
       
 
       
@@ -343,7 +414,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-03-05T15:01:50.000Z" itemprop="dateModified">2017-03-05</time>
+Updated:<time datetime="2017-03-05T15:01:50.000Z" itemprop="dateModified">2017-03-05</time>
 </span>
 
 
@@ -394,7 +465,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cjm6h8me60004a7zw7jmbyl7l" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/01/28/2017/" data-id="cjqnw5cm60004thzw7nhsoyfr" data_title="2016 学了啥" data_summary="除夕的晚上，惯例还是写一些总结，但是今年想写的是关于技..." class="article-share-link">Share</a>
       
 
       
@@ -404,7 +475,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-01-27T18:49:44.000Z" itemprop="dateModified">2017-01-28</time>
+Updated:<time datetime="2017-01-27T18:49:44.000Z" itemprop="dateModified">2017-01-28</time>
 </span>
 
 
@@ -451,7 +522,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -496,7 +567,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cjm6h8me50003a7zw03ilidde" data_title="云趣的电话面试" data_summary="
+	  <a data-url="http://yoursite.com/2016/12/11/20161211/" data-id="cjqnw5cm40003thzw2z7bqaa7" data_title="云趣的电话面试" data_summary="
 
 equals hashcode 的区别（用法）
 
@@ -508,7 +579,7 @@ equals hashcode 的区别（用法）
       
 	  
 <span>
-更新日期:<time datetime="2017-02-15T14:43:09.000Z" itemprop="dateModified">2017-02-15</time>
+Updated:<time datetime="2017-02-15T14:43:09.000Z" itemprop="dateModified">2017-02-15</time>
 </span>
 
 
@@ -559,7 +630,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cjm6h8mew000ua7zwvkv5llb7" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedList/" data-id="cjqnw5cmt000pthzw7d1zq6wx" data_title="LinkedList" data_summary="LinkedListLinkedList &lt;–A..." class="article-share-link">Share</a>
       
 
       
@@ -569,7 +640,7 @@ equals hashcode 的区别（用法）
 
 	  
 <span>
-更新日期:<time datetime="2016-12-11T07:52:36.000Z" itemprop="dateModified">2016-12-11</time>
+Updated:<time datetime="2016-12-11T07:52:36.000Z" itemprop="dateModified">2016-12-11</time>
 </span>
 
 
@@ -622,7 +693,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/LinkedHashMap/" data-id="cjm6h8mew000ta7zwhfkec6i1" data_title="LinkedHashMap" data_summary="LinkedHashMap是HashMap的子类，与H..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/LinkedHashMap/" data-id="cjqnw5cmv000rthzw5c51cty8" data_title="LinkedHashMap" data_summary="LinkedHashMap是HashMap的子类，与H..." class="article-share-link">Share</a>
       
 
       
@@ -632,7 +703,7 @@ equals hashcode 的区别（用法）
 
 	  
 <span>
-更新日期:<time datetime="2016-12-11T07:52:22.000Z" itemprop="dateModified">2016-12-11</time>
+Updated:<time datetime="2016-12-11T07:52:22.000Z" itemprop="dateModified">2016-12-11</time>
 </span>
 
 
@@ -691,7 +762,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/hashTable/" data-id="cjm6h8mf8001ca7zw6awhalns" data_title="hashTable" data_summary="HashTable同样是基于哈希表实现的，同样每个元素..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2016/09/28/hashTable/" data-id="cjqnw5cn40017thzwb7wo77k8" data_title="hashTable" data_summary="HashTable同样是基于哈希表实现的，同样每个元素..." class="article-share-link">Share</a>
       
 
       
@@ -701,7 +772,7 @@ equals hashcode 的区别（用法）
 
 	  
 <span>
-更新日期:<time datetime="2016-09-28T14:37:38.000Z" itemprop="dateModified">2016-09-28</time>
+Updated:<time datetime="2016-09-28T14:37:38.000Z" itemprop="dateModified">2016-09-28</time>
 </span>
 
 
@@ -752,7 +823,7 @@ equals hashcode 的区别（用法）
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2016/09/28/hashMap/" data-id="cjm6h8mf7001aa7zwn5ba061x" data_title="hashMap" data_summary="Java集合类的图
+	  <a data-url="http://yoursite.com/2016/09/28/hashMap/" data-id="cjqnw5cn10010thzwnktnq0g0" data_title="hashMap" data_summary="Java集合类的图
 12345678910111213..." class="article-share-link">Share</a>
       
 
@@ -763,96 +834,7 @@ equals hashcode 的区别（用法）
 
 	  
 <span>
-更新日期:<time datetime="2016-09-28T14:37:51.000Z" itemprop="dateModified">2016-09-28</time>
-</span>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-<!-- 多说评论框 start -->
-
-<!-- 多说评论框 end -->
-
-  
-    <article id="post-20160904" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/2016/09/23/20160904/" class="article-date">
-  <time datetime="2016-09-23T15:05:40.000Z" itemprop="datePublished">2016-09-23</time>
-</a>
-
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/面试/">面试</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/23/20160904/">挖财一面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
-		
-			
-		
-		</div>
-		
-        <ul>
-<li>自我介绍 公司经历 业务了解</li>
-</ul>
-<ul>
-<li>数据结构 链表/数组 </li>
-</ul>
-<ul>
-<li>算法 排序/查找 时间复杂度空间复杂度</li>
-</ul>
-<ul>
-<li>网络 三次握手 和 四次挥手 dns是什么</li>
-</ul>
-<ul>
-<li>Java中的集合 hashmap hash算法</li>
-</ul>
-<ul>
-<li>Spring的AOP和控制反转</li>
-</ul>
-<p>没有认真准备，一面被刷，以上</p>
-
-      
-    </div>
-    <footer class="article-footer">
-	  
-	  <a data-url="http://yoursite.com/2016/09/23/20160904/" data-id="cjm6h8me10001a7zwfvupmfc7" data_title="挖财一面" data_summary="
-自我介绍 公司经历 业务了解
-
-
-数据结构 链表/数..." class="article-share-link">Share</a>
-      
-
-      
-	  
-      
-	  
-<span>
-更新日期:<time datetime="2016-09-12T15:05:54.000Z" itemprop="dateModified">2016-09-12</time>
+Updated:<time datetime="2016-09-28T14:37:51.000Z" itemprop="dateModified">2016-09-28</time>
 </span>
 
 
@@ -896,7 +878,7 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
@@ -906,9 +888,9 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -916,9 +898,9 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
+      <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/devops/" style="font-size: 13px; color: #7dc3de">devops</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
     </div>
   </div>
 
@@ -928,7 +910,7 @@ equals hashcode 的区别（用法）
   <div class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -936,9 +918,13 @@ equals hashcode 的区别（用法）
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/08/monitor/">监控系统整理和体系化监控思考</a>
+          </li>
         
           <li>
             <a href="/2018/09/16/iptables/">iptables</a>
@@ -954,10 +940,6 @@ equals hashcode 的区别（用法）
         
           <li>
             <a href="/2018/01/03/django2-0/">Django 2.0 升级记</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/10/git/">git</a>
           </li>
         
       </ul>
@@ -978,7 +960,7 @@ equals hashcode 的区别（用法）
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 王开<br>
+      &copy; 2019 王开<br>
       Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and Theme by <a href="https://github.com/howiefh/hexo-theme-landscape-f" target="_blank" title="Landscape-F">Landscape-F</a>
     </div>
   </div>

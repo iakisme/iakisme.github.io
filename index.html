@@ -63,6 +63,112 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-monitor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    
+<a href="/2019/01/08/monitor/" class="article-date">
+  <time datetime="2019-01-08T15:08:13.000Z" itemprop="datePublished">2019-01-08</time>
+</a>
+
+
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/08/monitor/">监控系统整理和体系化监控思考</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+		<div id="toc" class="toc-article">
+			<h2 class="toc-title"><span>Contents</span></h2>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#监控系统整理和体系化监控思考"><span class="toc-number">1.</span> <span class="toc-text">监控系统整理和体系化监控思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法论"><span class="toc-number">1.1.</span> <span class="toc-text">方法论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从产品角度看监控"><span class="toc-number">1.2.</span> <span class="toc-text">从产品角度看监控</span></a></li></ol></li></ol>
+		
+		</div>
+		
+        <h1 id="监控系统整理和体系化监控思考"><a href="#监控系统整理和体系化监控思考" class="headerlink" title="监控系统整理和体系化监控思考"></a>监控系统整理和体系化监控思考</h1><p>监控是 Devops 中不可或缺的一环，也是运维工作，处理问题排查问题的重要工具，几乎天天会用到。</p>
+<p>在房多多现有的监控实践中，我们总是会发现出现一个问题后，会很难去真正排插出问题所在及影响范围，经常需要在各个监控程序之间切换来找到联系；在系统崩溃前，也没有预警来提示风险；在有规律的大流量来临前，没有相关提示要求扩容。</p>
+<p>房多多的监控软件基本是完善的，总结整理如下：</p>
+<p>基础监控：</p>
+<p>​    数据库监控：zabbix</p>
+<p>​    网络设备监控：zabbix</p>
+<p>​    机器资源监控：promethus node_exporter</p>
+<p>​    主机硬件监控：promethus node_exporter,zabbix</p>
+<p>​    ping 监控：promethus world_ping</p>
+<p>​    dns 监控：promethus world_ping</p>
+<p>​    OS 性能：</p>
+<p>业务监控：</p>
+<p>​    端口监控：promethus consul_exporter</p>
+<p>​    HTTP 服务拨测：promethus blackbox</p>
+<p>​    用户主观反馈：</p>
+<p>​    用户访问质量：ELK APM</p>
+<p>​    调用关系监控：ELK APM, PINGPOINT</p>
+<p>数据利用：</p>
+<p>​    告警分级：promethus alertmanager、zabbix 告警</p>
+<p>​    告警关联收敛：</p>
+<p>​    故障自愈：</p>
+<p>​    审计、报表：</p>
+<h2 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h2><p>想要洞悉监控，应该先理清一些概念。</p>
+<p>监控的定义：通过技术手段发现服务异常，持续优化业务可用性与用户体验。</p>
+<p>监控的方式：</p>
+<p>​    主动 程序埋点。</p>
+<p>​    被动，从外部观察，黑盒检测。</p>
+<p>​    旁路，与程序逻辑无关，对口碑和服务质量进行监控。</p>
+<p>监控的类型：</p>
+<p>​    基础监控：IAAS 层（服务器，网络，系统指标，硬盘等）</p>
+<p>​    业务监控：</p>
+<p>​        服务端监控：服务调用链监控</p>
+<p>​        客户端监控：APP，网站等直接与用户接触</p>
+<p>监控的实现原则：<br>​    指标全面，覆盖所有监控类型。</p>
+<p>​    部署容易，轻，稳定性高，侵入性小。</p>
+<p>​    智能分析、收敛，监控对象收敛。</p>
+<p>监控的本质：</p>
+<p>​    运维、开发、测试这三个角色应该视角统一，共同保证可靠性-&gt;可用性-&gt;用户体验。</p>
+<p>监控的目的：</p>
+<p>​    持续优化业务服务质量，并建设质量体系。</p>
+<h2 id="从产品角度看监控"><a href="#从产品角度看监控" class="headerlink" title="从产品角度看监控"></a>从产品角度看监控</h2><p>当我们站在使用者去开发监控时，我们会下意识的去针对缺失的监控软件进行补全，这可以称之为点。那么让我们换一个角度，当我们去用建设者这个视角去看监控是怎么样的呢，我想到的是抽象，在抽象的基础上去构建功能。那么一个业务监控应该如何抽象呢？</p>
+<p>​…​    </p>
+
+      
+    </div>
+    <footer class="article-footer">
+	  
+	  <a data-url="http://yoursite.com/2019/01/08/monitor/" data-id="cjqnw5cnr001xthzwlh5ozv97" data_title="监控系统整理和体系化监控思考" data_summary="监控系统整理和体系化监控思考监控是 Devops 中不..." class="article-share-link">Share</a>
+      
+
+      
+	  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li></ul>
+
+	  
+<span>
+Updated:<time datetime="2019-01-08T15:09:31.606Z" itemprop="dateModified">2019-01-08</time>
+</span>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+<!-- 多说评论框 start -->
+
+<!-- 多说评论框 end -->
+
+  
     <article id="post-iptables" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     
@@ -161,7 +267,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/09/16/iptables/" data-id="cjm6h8mf20015a7zwmodhq8fu" data_title="iptables" data_summary="iptables在熟悉 linux 系统之前，只是含糊..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/09/16/iptables/" data-id="cjqnw5cn5001athzwksrsmg62" data_title="iptables" data_summary="iptables在熟悉 linux 系统之前，只是含糊..." class="article-share-link">Share</a>
       
 
       
@@ -171,7 +277,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-09-18</time>
+Updated:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-09-18</time>
 </span>
 
 
@@ -214,7 +320,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -225,7 +331,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/05/28/old-hawkeye-design/" data-id="cjm6h8mfb001ia7zwrdgs234w" data_title="old-hawkeye-design" data_summary="" class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/05/28/old-hawkeye-design/" data-id="cjqnw5cnj001qthzwp62xdyty" data_title="old-hawkeye-design" data_summary="" class="article-share-link">Share</a>
       
 
       
@@ -233,7 +339,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-05-28</time>
+Updated:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-05-28</time>
 </span>
 
 
@@ -284,7 +390,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/02/20/2018/" data-id="cjm6h8mep000ma7zwy472imza" data_title="2017总结" data_summary="时间过得真的快啊，又是一年一度的个人思想汇报的时间了。..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/02/20/2018/" data-id="cjqnw5cmp000mthzw3ttdzzxk" data_title="2017总结" data_summary="时间过得真的快啊，又是一年一度的个人思想汇报的时间了。..." class="article-share-link">Share</a>
       
 
       
@@ -292,7 +398,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-02-20</time>
+Updated:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-02-20</time>
 </span>
 
 
@@ -343,7 +449,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/01/03/django2-0/" data-id="cjm6h8mez000za7zwsv2gxqgw" data_title="Django 2.0 升级记" data_summary="看到 Django 终于从2.0到了2.0.1，感觉大..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/01/03/django2-0/" data-id="cjqnw5cn7001ethzw5v47xnjx" data_title="Django 2.0 升级记" data_summary="看到 Django 终于从2.0到了2.0.1，感觉大..." class="article-share-link">Share</a>
       
 
       
@@ -353,7 +459,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-02-20</time>
+Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-02-20</time>
 </span>
 
 
@@ -396,7 +502,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-笔记"><span class="toc-number">1.</span> <span class="toc-text">Git 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#删除上一次的-commit"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">删除上一次的 commit</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
 		
@@ -409,7 +515,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/10/10/git/" data-id="cjm6h8mf00012a7zwseynkyj6" data_title="git" data_summary="Git 笔记删除上一次的 commitgit log ..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/10/10/git/" data-id="cjqnw5cn0000ythzwrqeouhik" data_title="git" data_summary="Git 笔记删除上一次的 commitgit log ..." class="article-share-link">Share</a>
       
 
       
@@ -419,7 +525,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-10-10</time>
+Updated:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-10-10</time>
 </span>
 
 
@@ -472,7 +578,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cjm6h8mer000na7zwau5czrgo" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cjqnw5cms000nthzwzblisnp2" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
       
 
       
@@ -482,7 +588,7 @@
 
 	  
 <span>
-更新日期:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-05-03</time>
+Updated:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-05-03</time>
 </span>
 
 
@@ -525,7 +631,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -543,7 +649,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cjm6h8mel000ja7zwcnk3jyuj" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cjqnw5cmj000fthzwtzg32z64" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
       
 
       
@@ -551,7 +657,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-04-28</time>
+Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-04-28</time>
 </span>
 
 
@@ -594,7 +700,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
+			<h2 class="toc-title"><span>Contents</span></h2>
 		
 			
 		
@@ -621,7 +727,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/20/20170421/" data-id="cjm6h8mek000ha7zwh4cia5ed" data_title="20170420周记" data_summary="从上一家公司结束以后，好像就丢了写日报/周报这个比较好..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/20/20170421/" data-id="cjqnw5cmn000jthzwq3po9i2v" data_title="20170420周记" data_summary="从上一家公司结束以后，好像就丢了写日报/周报这个比较好..." class="article-share-link">Share</a>
       
 
       
@@ -629,7 +735,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-05-31</time>
+Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-05-31</time>
 </span>
 
 
@@ -682,7 +788,7 @@
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/15/20170415/" data-id="cjm6h8meh000ca7zwkb84nyd5" data_title="理解和解决前后端分离出现的跨域问题" data_summary="前后端分离的实践比较少，在写完接口，给前端时，前端说不..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/15/20170415/" data-id="cjqnw5cml000hthzwzhbhevwc" data_title="理解和解决前后端分离出现的跨域问题" data_summary="前后端分离的实践比较少，在写完接口，给前端时，前端说不..." class="article-share-link">Share</a>
       
 
       
@@ -690,78 +796,7 @@
       
 	  
 <span>
-更新日期:<time datetime="2017-04-15T07:04:46.000Z" itemprop="dateModified">2017-04-15</time>
-</span>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-<!-- 多说评论框 start -->
-
-<!-- 多说评论框 end -->
-
-  
-    <article id="post-20170315" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    
-<a href="/2017/03/15/20170315/" class="article-date">
-  <time datetime="2017-03-15T09:55:28.000Z" itemprop="datePublished">2017-03-15</time>
-</a>
-
-
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/15/20170315/">python 项目部署步骤</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目录</span></h2>
-		
-			
-		
-		</div>
-		
-        <p>1.安装 pyenv和 python</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash</div><div class="line"></div><div class="line">export PYENV_ROOT=&quot;$HOME/.pyenv&quot; -&gt;~/.bashrc</div><div class="line">export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot; -&gt;~/.bashrc</div><div class="line">eval &quot;$(pyenv init -)&quot; -&gt;~/.bashrc</div><div class="line"></div><div class="line"></div><div class="line">$ sudo apt-get install libc6-dev gcc</div><div class="line">$ sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev</div><div class="line"></div><div class="line">$ pyenv install PYTHON_VERSION</div><div class="line">$ pyenv rehash</div><div class="line">$ cd PATH_TO_PROJECT</div><div class="line">$ pyenv local PYTHON_VERSION</div></pre></td></tr></table></figure>
-<p>2.安装mysql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install mysql-server</div><div class="line">$ sudo apt-get install libmysqlclient-dev</div><div class="line">mysql&gt; CREATE DATABASE databasename_in_django_settings</div></pre></td></tr></table></figure>
-<p>3.pip install</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd path/to/project </div><div class="line">$ pip instll-r path/to/requirements.txt</div></pre></td></tr></table></figure>
-<p>4.run project</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python manage.py makemigrations</div><div class="line">$ python manage.py migrate</div><div class="line">$ python manage.py runserver</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-	  
-	  <a data-url="http://yoursite.com/2017/03/15/20170315/" data-id="cjm6h8mej000fa7zwxagvokfw" data_title="python 项目部署步骤" data_summary="1.安装 pyenv和 python
-12345678..." class="article-share-link">Share</a>
-      
-
-      
-	  
-      
-	  
-<span>
-更新日期:<time datetime="2017-03-15T09:58:34.000Z" itemprop="dateModified">2017-03-15</time>
+Updated:<time datetime="2017-04-15T07:04:46.000Z" itemprop="dateModified">2017-04-15</time>
 </span>
 
 
@@ -805,7 +840,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
+    <h3 class="widget-title">Categories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
@@ -815,9 +850,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -825,9 +860,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
+      <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/devops/" style="font-size: 13px; color: #7dc3de">devops</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
     </div>
   </div>
 
@@ -837,7 +872,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">archive</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -845,9 +880,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">近期文章</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/01/08/monitor/">监控系统整理和体系化监控思考</a>
+          </li>
         
           <li>
             <a href="/2018/09/16/iptables/">iptables</a>
@@ -863,10 +902,6 @@
         
           <li>
             <a href="/2018/01/03/django2-0/">Django 2.0 升级记</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/10/git/">git</a>
           </li>
         
       </ul>
@@ -887,7 +922,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 王开<br>
+      &copy; 2019 王开<br>
       Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a> and Theme by <a href="https://github.com/howiefh/hexo-theme-landscape-f" target="_blank" title="Landscape-F">Landscape-F</a>
     </div>
   </div>

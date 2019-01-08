@@ -3,18 +3,14 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Django 2.0 升级记 | 曲徑</title>
+  <title>Tag: devops | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Django 2.0 升级记">
-<meta property="og:url" content="http://yoursite.com/2018/01/03/django2-0/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="曲徑">
+<meta property="og:url" content="http://yoursite.com/tags/devops/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。">
-<meta property="og:updated_time" content="2018-02-19T16:17:00.737Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django 2.0 升级记">
-<meta name="twitter:description" content="看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。">
+<meta name="twitter:title" content="曲徑">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -65,111 +61,46 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-django2-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
+        <section id="main">
+  
+  
     
-<a href="/2018/01/03/django2-0/" class="article-date">
-  <time datetime="2018-01-03T03:54:41.000Z" itemprop="datePublished">2018-01-03</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+<a href="/2019/01/08/monitor/" class="archive-article-date">
+  <time datetime="2019-01-08T15:08:13.000Z" itemprop="datePublished">Jan 8</time>
 </a>
 
 
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+      
   
-    <h1 class="article-title" itemprop="name">
-      Django 2.0 升级记
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/01/08/monitor/">监控系统整理和体系化监控思考</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
-		
-			
-		
-		</div>
-		
-        <p>看到 Django 终于从2.0到了2.0.1，感觉大家坑应该都踩的差不多了，那我们也可以开始升级啦。<br><a id="more"></a></p>
-<p>首先</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install django==2.0.1</div></pre></td></tr></table></figure>
-<p>然后依旧是 runserver，马上出现了错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">  File &quot;/Users/wangkai/Desktop/workspace/hawkeye-v2/restful/hawkeye/authx/models.py&quot;, line 64, in User</div><div class="line">    owner = models.ForeignKey(&apos;User&apos;, null=True, blank=True)</div><div class="line">TypeError: __init__() missing 1 required positional argument: &apos;on_delete&apos;</div></pre></td></tr></table></figure>
-<p>看了官方的说明：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The on_delete argument for ForeignKey and OneToOneField is now required in models and migrations. Consider squashing migrations so that you have fewer of them to update.</div></pre></td></tr></table></figure>
-<p>补全了 on_delete，然后来到了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">raise ImproperlyConfigured(&quot;Cannot import channel routing %r: %s&quot; % (routing, e))</div><div class="line">django.core.exceptions.ImproperlyConfigured: Cannot import channel routing &apos;hawkeye.routing.channel_routing&apos;: No module named &apos;django.core.urlresolvers&apos;</div></pre></td></tr></table></figure>
-<p>升级djangorestframework:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install djangorestframework==3.7.7</div></pre></td></tr></table></figure>
-<p>解决了一些升级djangorestframework后出现的引用问题</p>
-<p>然后修改 各种urls.py，不过似乎正则 url 的方式还是支持的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">old:</div><div class="line">url(r&apos;^api/$&apos;, include(&apos;api.urls&apos;, namespace=&apos;api&apos;)),</div><div class="line">new:</div><div class="line">url(&apos;api/&apos;, include(&apos;api.urls&apos;)),</div></pre></td></tr></table></figure>
-<p>ok，升级到此结束，接下来就开始测试踩坑。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-	  
-	  <!-- 百度分享 Start -->
-	  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
-	  <!-- 百度分享 End -->
-	  
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
-
-	  
-<span>
-Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-02-20</time>
-</span>
-
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/02/20/2018/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          2017总结
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/10/10/git/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
-
-
-<!-- 多说评论框 start -->
-
-<!-- 多说评论框 end -->
+  
+  
+    </div></section>
+  
 </section>
         
           
-  <div id="toc" class="toc-aside">
-  <h2 class="toc-title">Contents</h2>
-  
-  </div>
-
 <aside id="sidebar">
 
   
@@ -294,8 +225,6 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
 
 <!-- 百度分享 start -->
 
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["mshare","douban","bdysc","sqq","qq","hi","baidu","huaban","youdao","sdo","mail","xg","diandian","fx","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
 <!-- 百度分享 end -->
 
 <!--
@@ -317,11 +246,6 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
 	<script src="/js/gotop.js"></script>
 	-->
 
-
-	<a class="icon-toc-toggle" href="javascript:void(0)" title="文章目录"></a>
-	<!--
-	<script src="/js/toc_aside_toggle.js"></script>
-	-->
 
 </div>
 <script src="/js/toc_aside_toggle.js"></script>
