@@ -88,62 +88,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#监控系统整理和体系化监控思考"><span class="toc-number">1.</span> <span class="toc-text">监控系统整理和体系化监控思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法论"><span class="toc-number">1.1.</span> <span class="toc-text">方法论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从产品角度看监控"><span class="toc-number">1.2.</span> <span class="toc-text">从产品角度看监控</span></a></li></ol></li></ol>
-		
-		</div>
-		
         <h1 id="监控系统整理和体系化监控思考"><a href="#监控系统整理和体系化监控思考" class="headerlink" title="监控系统整理和体系化监控思考"></a>监控系统整理和体系化监控思考</h1><p>监控是 Devops 中不可或缺的一环，也是运维工作，处理问题排查问题的重要工具，几乎天天会用到。</p>
 <p>在房多多现有的监控实践中，我们总是会发现出现一个问题后，会很难去真正排插出问题所在及影响范围，经常需要在各个监控程序之间切换来找到联系；在系统崩溃前，也没有预警来提示风险；在有规律的大流量来临前，没有相关提示要求扩容。</p>
-<p>房多多的监控软件基本是完善的，总结整理如下：</p>
-<p>基础监控：</p>
-<p>​    数据库监控：zabbix</p>
-<p>​    网络设备监控：zabbix</p>
-<p>​    机器资源监控：promethus node_exporter</p>
-<p>​    主机硬件监控：promethus node_exporter,zabbix</p>
-<p>​    ping 监控：promethus world_ping</p>
-<p>​    dns 监控：promethus world_ping</p>
-<p>​    OS 性能：</p>
-<p>业务监控：</p>
-<p>​    端口监控：promethus consul_exporter</p>
-<p>​    HTTP 服务拨测：promethus blackbox</p>
-<p>​    用户主观反馈：</p>
-<p>​    用户访问质量：ELK APM</p>
-<p>​    调用关系监控：ELK APM, PINGPOINT</p>
-<p>数据利用：</p>
-<p>​    告警分级：promethus alertmanager、zabbix 告警</p>
-<p>​    告警关联收敛：</p>
-<p>​    故障自愈：</p>
-<p>​    审计、报表：</p>
-<h2 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h2><p>想要洞悉监控，应该先理清一些概念。</p>
-<p>监控的定义：通过技术手段发现服务异常，持续优化业务可用性与用户体验。</p>
-<p>监控的方式：</p>
-<p>​    主动 程序埋点。</p>
-<p>​    被动，从外部观察，黑盒检测。</p>
-<p>​    旁路，与程序逻辑无关，对口碑和服务质量进行监控。</p>
-<p>监控的类型：</p>
-<p>​    基础监控：IAAS 层（服务器，网络，系统指标，硬盘等）</p>
-<p>​    业务监控：</p>
-<p>​        服务端监控：服务调用链监控</p>
-<p>​        客户端监控：APP，网站等直接与用户接触</p>
-<p>监控的实现原则：<br>​    指标全面，覆盖所有监控类型。</p>
-<p>​    部署容易，轻，稳定性高，侵入性小。</p>
-<p>​    智能分析、收敛，监控对象收敛。</p>
-<p>监控的本质：</p>
-<p>​    运维、开发、测试这三个角色应该视角统一，共同保证可靠性-&gt;可用性-&gt;用户体验。</p>
-<p>监控的目的：</p>
-<p>​    持续优化业务服务质量，并建设质量体系。</p>
-<h2 id="从产品角度看监控"><a href="#从产品角度看监控" class="headerlink" title="从产品角度看监控"></a>从产品角度看监控</h2><p>当我们站在使用者去开发监控时，我们会下意识的去针对缺失的监控软件进行补全，这可以称之为点。那么让我们换一个角度，当我们去用建设者这个视角去看监控是怎么样的呢，我想到的是抽象，在抽象的基础上去构建功能。那么一个业务监控应该如何抽象呢？</p>
-<p>​…​    </p>
-
+<p>房多多的监控软件基本是完善的，总结整理如下：<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/08/monitor/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2019/01/08/monitor/" data-id="cjqnw5cnr001xthzwlh5ozv97" data_title="监控系统整理和体系化监控思考" data_summary="监控系统整理和体系化监控思考监控是 Devops 中不..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2019/01/08/monitor/" data-id="cjqp6xyrq001dm8zwchq2s2bq" data_title="监控系统整理和体系化监控思考" data_summary="监控系统整理和体系化监控思考监控是 Devops 中不..." class="article-share-link">Share</a>
       
 
       
@@ -153,7 +110,7 @@
 
 	  
 <span>
-Updated:<time datetime="2019-01-08T15:09:31.606Z" itemprop="dateModified">2019-01-08</time>
+Updated:<time datetime="2019-01-09T12:59:22.652Z" itemprop="dateModified">2019-01-09</time>
 </span>
 
 
@@ -267,7 +224,7 @@ Updated:<time datetime="2019-01-08T15:09:31.606Z" itemprop="dateModified">2019-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/09/16/iptables/" data-id="cjqnw5cn5001athzwksrsmg62" data_title="iptables" data_summary="iptables在熟悉 linux 系统之前，只是含糊..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/09/16/iptables/" data-id="cjqp6xyrs001hm8zwu90xy0dw" data_title="iptables" data_summary="iptables在熟悉 linux 系统之前，只是含糊..." class="article-share-link">Share</a>
       
 
       
@@ -331,7 +288,7 @@ Updated:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/05/28/old-hawkeye-design/" data-id="cjqnw5cnj001qthzwp62xdyty" data_title="old-hawkeye-design" data_summary="" class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/05/28/old-hawkeye-design/" data-id="cjqp6xyry001rm8zw42g1m6r3" data_title="old-hawkeye-design" data_summary="" class="article-share-link">Share</a>
       
 
       
@@ -390,7 +347,7 @@ Updated:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/02/20/2018/" data-id="cjqnw5cmp000mthzw3ttdzzxk" data_title="2017总结" data_summary="时间过得真的快啊，又是一年一度的个人思想汇报的时间了。..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/02/20/2018/" data-id="cjqp6xyr5000mm8zw5ml3hofs" data_title="2017总结" data_summary="时间过得真的快啊，又是一年一度的个人思想汇报的时间了。..." class="article-share-link">Share</a>
       
 
       
@@ -449,7 +406,7 @@ Updated:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/01/03/django2-0/" data-id="cjqnw5cn7001ethzw5v47xnjx" data_title="Django 2.0 升级记" data_summary="看到 Django 终于从2.0到了2.0.1，感觉大..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/01/03/django2-0/" data-id="cjqp6xyr9000qm8zwz4w02a8y" data_title="Django 2.0 升级记" data_summary="看到 Django 终于从2.0到了2.0.1，感觉大..." class="article-share-link">Share</a>
       
 
       
@@ -515,7 +472,7 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/10/10/git/" data-id="cjqnw5cn0000ythzwrqeouhik" data_title="git" data_summary="Git 笔记删除上一次的 commitgit log ..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/10/10/git/" data-id="cjqp6xyri0011m8zwmj74umcb" data_title="git" data_summary="Git 笔记删除上一次的 commitgit log ..." class="article-share-link">Share</a>
       
 
       
@@ -578,7 +535,7 @@ Updated:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-1
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cjqnw5cms000nthzwzblisnp2" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cjqp6xyr3000jm8zwp6wsftez" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
       
 
       
@@ -649,7 +606,7 @@ Updated:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cjqnw5cmj000fthzwtzg32z64" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cjqp6xyr2000hm8zw5h0uu4ii" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
       
 
       
@@ -727,7 +684,7 @@ Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/20/20170421/" data-id="cjqnw5cmn000jthzwq3po9i2v" data_title="20170420周记" data_summary="从上一家公司结束以后，好像就丢了写日报/周报这个比较好..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/20/20170421/" data-id="cjqp6xyr0000fm8zwihdajhkm" data_title="20170420周记" data_summary="从上一家公司结束以后，好像就丢了写日报/周报这个比较好..." class="article-share-link">Share</a>
       
 
       
@@ -788,7 +745,7 @@ Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/15/20170415/" data-id="cjqnw5cml000hthzwzhbhevwc" data_title="理解和解决前后端分离出现的跨域问题" data_summary="前后端分离的实践比较少，在写完接口，给前端时，前端说不..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/15/20170415/" data-id="cjqp6xyqz000cm8zwdw9n2r17" data_title="理解和解决前后端分离出现的跨域问题" data_summary="前后端分离的实践比较少，在写完接口，给前端时，前端说不..." class="article-share-link">Share</a>
       
 
       
