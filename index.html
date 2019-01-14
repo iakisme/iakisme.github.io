@@ -88,55 +88,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-		
-		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#运维的思维升级-不可变基础设施"><span class="toc-number">1.</span> <span class="toc-text">运维的思维升级-不可变基础设施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#云原生的定义"><span class="toc-number">1.0.1.</span> <span class="toc-text">云原生的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是不可变基础设施"><span class="toc-number">1.0.2.</span> <span class="toc-text">什么是不可变基础设施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变和不可变基础设施之间的差异"><span class="toc-number">1.0.3.</span> <span class="toc-text">可变和不可变基础设施之间的差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不可变基础设施的优势"><span class="toc-number">1.0.4.</span> <span class="toc-text">不可变基础设施的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#提升发布应用效率"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">提升发布应用效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#没有雪花服务器"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">没有雪花服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速水平扩展"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">快速水平扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的回滚和恢复"><span class="toc-number">1.0.4.4.</span> <span class="toc-text">简单的回滚和恢复</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#房多多的不可变基础设施实施细节"><span class="toc-number">1.0.5.</span> <span class="toc-text">房多多的不可变基础设施实施细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">1.1.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
-		
-		</div>
-		
-        <h1 id="运维的思维升级-不可变基础设施"><a href="#运维的思维升级-不可变基础设施" class="headerlink" title="运维的思维升级-不可变基础设施"></a>运维的思维升级-不可变基础设施</h1><p>不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。</p>
-<h3 id="云原生的定义"><a href="#云原生的定义" class="headerlink" title="云原生的定义"></a>云原生的定义</h3><p>云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行<strong>可弹性扩展的应用</strong>。云原生的代表技术包括<strong>容器、服务网格、微服务、不可变基础设施</strong>和<strong>声明式API。</strong></p>
-<p>这些技术能够构建<strong>容错性好</strong>、<strong>易于管理</strong>和<strong>便于观察</strong>的<strong>松耦合</strong>系统。结合可靠的<strong>自动化</strong>手段，云原生技术使工程师能够轻松地对系统作出<strong>频繁和可预测的重大变更</strong>。</p>
-<h3 id="什么是不可变基础设施"><a href="#什么是不可变基础设施" class="headerlink" title="什么是不可变基础设施"></a>什么是不可变基础设施</h3><p>在我们原先（现在还存在）的运维方式里，我们会用物理机或者虚拟机去安装操作系统、逐个上传代码部署业务应用、SSH 连接服务器、手动升级降级软件包的版本。总的来说当基础设施创建以后，它是会被经常更改的，这些物理机或者虚拟机在我的概念里都是 “可变的基础设施”、我从开发的角度认为它是非常传统和手工作坊的感觉。</p>
-<p>那相反来说，就可以想象出一个不可变的基础设施应该是怎么样的：在一个基础设施被创建以后，是不接受任何方式的更新的，这个基础设施也可以作为范本不断的扩展成 N 个。如果需要更新修改默写内容，应该先去修改对应的公共的配置，构建新的服务器，然后替换全部旧的服务器。简单的来说就是：旧的不去新的不来 : )</p>
-<p>不可变基础设施的优势在于更高的一致性和可靠性，创建、部署的过程也是<strong>可预测</strong>的。还可以避免Configuration Drift（配置漂移，为了解决某个业务特定问题，为某一个服务器安装了一个库等，然后出现了换一个环境应用起不来的情况）、Snowflake Servers（雪花服务器：这个服务器升级了 Python 版本以后，某些应用就是跑不起来）等等。</p>
-<h3 id="可变和不可变基础设施之间的差异"><a href="#可变和不可变基础设施之间的差异" class="headerlink" title="可变和不可变基础设施之间的差异"></a>可变和不可变基础设施之间的差异</h3><p>可变基础和不可变基础设施之间最根本的区别在于它们的核心理念：前者旨在在部署后进行更改; 后者旨在保持不变并从根本上进行替换。</p>
-<p>Randy Bias提出过一个很有意思的”宠物与牛”概念：传统的可变的基础设施是不可以随便替代的，它们像宠物一样：每一个对你来说都是独一无二的、无法模仿的、自己一手养大的、如果”死了”对你的打击是毁灭性的；可变的基础设施则是相反，它是一次性的、它是很容易通过自动化设施来横向扩展的，它们是一个牛群，没有一个是独一无二或者不可或缺的。</p>
-<p>他的原话：</p>
-<blockquote>
-<p>在旧的做事方式中，我们将服务器视为宠物，例如Bob是一个邮件服务器。如果Bob损坏了，那就全都要靠手动的了。那么首席执行官也就无法收到他的电子邮件了，这无异于是世界末日。但如果以新的方式，服务器会被编号，就像牛群中的牛一样。例如，www001到www100。当一台服务器发生故障时，它会被取回，射击并在线路上更换。</p>
-</blockquote>
-<p>其实《凤凰项目》这本书里面的 Phoenix 服务器 是一个非常优美的比喻，当我们的基础设施有一天（或者说每时每刻）变成了灰烬，他可以优雅的从头开始构建一个新的服务器。与之对应就是雪花服务器，手工管理，经常更新、形成一个独特的环境。</p>
-<h3 id="不可变基础设施的优势"><a href="#不可变基础设施的优势" class="headerlink" title="不可变基础设施的优势"></a>不可变基础设施的优势</h3><h4 id="提升发布应用效率"><a href="#提升发布应用效率" class="headerlink" title="提升发布应用效率"></a><strong>提升发布应用效率</strong></h4><p>基于不可变基础设施的部署都是可以由代码设定的，类似于Dockerfile，这样就可以很简单的用上 git 等版本控制来维护环境。部署应用也不会再依赖服务器之前的状态，在本地能起来，在线上也能起来。很少会出现 “Not Work On My Machine”这样的问题，现在业务开发来私聊我线上应用起不来的问题，我会很有信心的和他说是他的代码问题而不是环境问题。</p>
-<h4 id="没有雪花服务器"><a href="#没有雪花服务器" class="headerlink" title="没有雪花服务器"></a>没有雪花服务器</h4><p>我可以允许你登录服务器进行一些 debug，查看日志的操作，但是我知道随便你怎么更改都是无效的，下一次启动就会完全还原，完全不担心。需要更改？请修改配置基础设施的代码。</p>
-<h4 id="快速水平扩展"><a href="#快速水平扩展" class="headerlink" title="快速水平扩展"></a>快速水平扩展</h4><p>因为所有服务器都是用同一份配置代码生成，只要有资源，我可以很简单的通过更改副本数就可以完成水平扩展，而非手忙脚乱的开机器、登录、做变更操作。</p>
-<h4 id="简单的回滚和恢复"><a href="#简单的回滚和恢复" class="headerlink" title="简单的回滚和恢复"></a>简单的回滚和恢复</h4><p>我可以通过基础设施配置代码的版本控制来快速的回滚到上一个版本，不管你装了多少新的依赖、新的库，对我来说都是一样的。大大缩短了恢复的时间。</p>
-<h3 id="房多多的不可变基础设施实施细节"><a href="#房多多的不可变基础设施实施细节" class="headerlink" title="房多多的不可变基础设施实施细节"></a>房多多的不可变基础设施实施细节</h3><p><strong>已完成：</strong></p>
-<ol>
-<li>业务项目 Docker化</li>
-<li>利用 Docker 环境来build Docker Image</li>
-<li>CI/CD 流程全部 Pipeline 化，代码化</li>
-<li>利用 Portainer,Docker Swarm 搭建面向服务的架构</li>
-<li>业务项目尽量无状态化</li>
-</ol>
-<p><strong>待完成：</strong></p>
-<ol>
-<li>持久的数据层：集中式的日志保存、有状态服务的存储</li>
-<li>底层物理机的不可变基础设施化：Code as Infrastructure</li>
-<li>业务开发的运维都理解这层思想，少用 SSH，本地调试而非线上调试</li>
-</ol>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本文是想在运维团队中科普云原生中很重要的基础设施不可变的思想、统一思想。对比了旧式的可变基础设施架构的概念和实际差异、使用它的优势以及实现的详细信息。</p>
-<p>相信看完以后大家都会觉得这是一个正确路子，只要方向正确，我们的努力就不会白白浪费！</p>
-<p>参考文档：<a href="https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure</a></p>
-<p>推荐听一下在一个基础设施良好的公司的开发体验：<a href="http://codetimecn.com/episodes/devops_tooling" target="_blank" rel="external">http://codetimecn.com/episodes/devops_tooling</a></p>
-
+        <h1 id="运维的思维升级-不可变基础设施"><a href="#运维的思维升级-不可变基础设施" class="headerlink" title="运维的思维升级-不可变基础设施"></a>运维的思维升级-不可变基础设施</h1><p>不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/12/Immutable-Infrastructure/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2019/01/12/Immutable-Infrastructure/" data-id="cjqtcidkw000qz7zwzry9jkzz" data_title="运维的思维升级-不可变基础设施" data_summary="运维的思维升级-不可变基础设施不可变基础设施（Immu..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2019/01/12/Immutable-Infrastructure/" data-id="cjqvod1kw000jpizwm86mji4y" data_title="运维的思维升级-不可变基础设施" data_summary="运维的思维升级-不可变基础设施不可变基础设施（Immu..." class="article-share-link">Share</a>
       
 
       
@@ -146,7 +108,7 @@
 
 	  
 <span>
-Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-01-12</time>
+更新日期:<time datetime="2019-01-14T01:54:23.755Z" itemprop="dateModified">2019-01-14</time>
 </span>
 
 
@@ -199,7 +161,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2019/01/08/monitor/" data-id="cjqtcidla001hz7zwnn5fwatl" data_title="监控系统整理和体系化监控思考" data_summary="监控系统整理和体系化监控思考监控是 Devops 中不..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2019/01/08/monitor/" data-id="cjqvod1lm001rpizwr4fjpwfv" data_title="监控系统整理和体系化监控思考" data_summary="监控系统整理和体系化监控思考监控是 Devops 中不..." class="article-share-link">Share</a>
       
 
       
@@ -209,7 +171,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
 
 	  
 <span>
-Updated:<time datetime="2019-01-09T12:59:22.652Z" itemprop="dateModified">2019-01-09</time>
+更新日期:<time datetime="2019-01-09T12:59:22.652Z" itemprop="dateModified">2019-01-09</time>
 </span>
 
 
@@ -323,7 +285,7 @@ Updated:<time datetime="2019-01-09T12:59:22.652Z" itemprop="dateModified">2019-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/09/16/iptables/" data-id="cjqtcidl9001dz7zwktoe2v6l" data_title="iptables" data_summary="iptables在熟悉 linux 系统之前，只是含糊..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/09/16/iptables/" data-id="cjqvod1le001dpizw49xv2sba" data_title="iptables" data_summary="iptables在熟悉 linux 系统之前，只是含糊..." class="article-share-link">Share</a>
       
 
       
@@ -333,7 +295,7 @@ Updated:<time datetime="2019-01-09T12:59:22.652Z" itemprop="dateModified">2019-0
 
 	  
 <span>
-Updated:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-09-18</time>
+更新日期:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-09-18</time>
 </span>
 
 
@@ -376,7 +338,7 @@ Updated:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-0
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
+			<h2 class="toc-title"><span>文章目錄</span></h2>
 		
 			
 		
@@ -387,7 +349,7 @@ Updated:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/05/28/old-hawkeye-design/" data-id="cjqtcidlf001sz7zwh89vqjec" data_title="old-hawkeye-design" data_summary="" class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/05/28/old-hawkeye-design/" data-id="cjqvod1ln001tpizw5ev80o7d" data_title="old-hawkeye-design" data_summary="" class="article-share-link">Share</a>
       
 
       
@@ -395,7 +357,7 @@ Updated:<time datetime="2018-09-17T16:01:14.794Z" itemprop="dateModified">2018-0
       
 	  
 <span>
-Updated:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-05-28</time>
+更新日期:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-05-28</time>
 </span>
 
 
@@ -446,7 +408,7 @@ Updated:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/02/20/2018/" data-id="cjqtcidku000oz7zwydmdyaar" data_title="2017总结" data_summary="时间过得真的快啊，又是一年一度的个人思想汇报的时间了。..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/02/20/2018/" data-id="cjqvod1kz000opizw7jbd0yod" data_title="2017总结" data_summary="时间过得真的快啊，又是一年一度的个人思想汇报的时间了。..." class="article-share-link">Share</a>
       
 
       
@@ -454,7 +416,7 @@ Updated:<time datetime="2018-05-28T14:49:17.310Z" itemprop="dateModified">2018-0
       
 	  
 <span>
-Updated:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-02-20</time>
+更新日期:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-02-20</time>
 </span>
 
 
@@ -505,7 +467,7 @@ Updated:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2018/01/03/django2-0/" data-id="cjqtcidl40011z7zwufae4oyt" data_title="Django 2.0 升级记" data_summary="看到 Django 终于从2.0到了2.0.1，感觉大..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2018/01/03/django2-0/" data-id="cjqvod1ld001apizwik5v9e0l" data_title="Django 2.0 升级记" data_summary="看到 Django 终于从2.0到了2.0.1，感觉大..." class="article-share-link">Share</a>
       
 
       
@@ -515,7 +477,7 @@ Updated:<time datetime="2018-02-19T16:16:38.903Z" itemprop="dateModified">2018-0
 
 	  
 <span>
-Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-02-20</time>
+更新日期:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-02-20</time>
 </span>
 
 
@@ -558,7 +520,7 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
+			<h2 class="toc-title"><span>文章目錄</span></h2>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-笔记"><span class="toc-number">1.</span> <span class="toc-text">Git 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#删除上一次的-commit"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">删除上一次的 commit</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
 		
@@ -571,7 +533,7 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/10/10/git/" data-id="cjqtcidl8001az7zw72ozfsh4" data_title="git" data_summary="Git 笔记删除上一次的 commitgit log ..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/10/10/git/" data-id="cjqvod1l80010pizw10ddnqhb" data_title="git" data_summary="Git 笔记删除上一次的 commitgit log ..." class="article-share-link">Share</a>
       
 
       
@@ -581,7 +543,7 @@ Updated:<time datetime="2018-02-19T16:17:00.737Z" itemprop="dateModified">2018-0
 
 	  
 <span>
-Updated:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-10-10</time>
+更新日期:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-10-10</time>
 </span>
 
 
@@ -634,7 +596,7 @@ Updated:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-1
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cjqtcidks000mz7zwuliisa2w" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/05/03/20170503/" data-id="cjqvod1l0000qpizwn0pu7xfw" data_title="Oracle 分享 记录" data_summary="基础知识因为以前对 SQL 的细节都不太熟悉，所以先搜..." class="article-share-link">Share</a>
       
 
       
@@ -644,7 +606,7 @@ Updated:<time datetime="2017-10-10T08:18:08.640Z" itemprop="dateModified">2017-1
 
 	  
 <span>
-Updated:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-05-03</time>
+更新日期:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-05-03</time>
 </span>
 
 
@@ -687,7 +649,7 @@ Updated:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-0
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
+			<h2 class="toc-title"><span>文章目錄</span></h2>
 		
 			
 		
@@ -705,7 +667,7 @@ Updated:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cjqtcidkq000kz7zwrorhoubi" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/28/20170428/" data-id="cjqvod1kx000mpizwrjcw5lc2" data_title="解决 image not found 问题" data_summary="原链接：http://stackoverflow.co..." class="article-share-link">Share</a>
       
 
       
@@ -713,7 +675,7 @@ Updated:<time datetime="2017-05-03T07:55:26.000Z" itemprop="dateModified">2017-0
       
 	  
 <span>
-Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-04-28</time>
+更新日期:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-04-28</time>
 </span>
 
 
@@ -756,7 +718,7 @@ Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-0
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
+			<h2 class="toc-title"><span>文章目錄</span></h2>
 		
 			
 		
@@ -783,7 +745,7 @@ Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-0
     </div>
     <footer class="article-footer">
 	  
-	  <a data-url="http://yoursite.com/2017/04/20/20170421/" data-id="cjqtcidkn000fz7zwgh2m8d9i" data_title="20170420周记" data_summary="从上一家公司结束以后，好像就丢了写日报/周报这个比较好..." class="article-share-link">Share</a>
+	  <a data-url="http://yoursite.com/2017/04/20/20170421/" data-id="cjqvod1ku000hpizwfzp8s7mg" data_title="20170420周记" data_summary="从上一家公司结束以后，好像就丢了写日报/周报这个比较好..." class="article-share-link">Share</a>
       
 
       
@@ -791,7 +753,7 @@ Updated:<time datetime="2017-04-28T09:27:55.000Z" itemprop="dateModified">2017-0
       
 	  
 <span>
-Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-05-31</time>
+更新日期:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-05-31</time>
 </span>
 
 
@@ -835,7 +797,7 @@ Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分類</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
@@ -845,7 +807,7 @@ Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">標簽</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
@@ -855,7 +817,7 @@ Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">標簽雲</h3>
     <div class="widget tagcloud">
       <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/devops/" style="font-size: 16.5px; color: #4dbc6f">devops</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
     </div>
@@ -875,7 +837,7 @@ Updated:<time datetime="2017-05-31T13:27:06.000Z" itemprop="dateModified">2017-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         

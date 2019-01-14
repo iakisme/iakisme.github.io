@@ -5,19 +5,16 @@
   
   <title>运维的思维升级-不可变基础设施 | 曲徑</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="运维的思维升级-不可变基础设施不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。
-云原生的定义云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原">
+  <meta name="description" content="运维的思维升级-不可变基础设施不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运维的思维升级-不可变基础设施">
 <meta property="og:url" content="http://yoursite.com/2019/01/12/Immutable-Infrastructure/index.html">
 <meta property="og:site_name" content="曲徑">
-<meta property="og:description" content="运维的思维升级-不可变基础设施不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。
-云原生的定义云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原">
-<meta property="og:updated_time" content="2019-01-12T10:46:09.405Z">
+<meta property="og:description" content="运维的思维升级-不可变基础设施不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。">
+<meta property="og:updated_time" content="2019-01-14T01:54:23.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运维的思维升级-不可变基础设施">
-<meta name="twitter:description" content="运维的思维升级-不可变基础设施不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。
-云原生的定义云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原">
+<meta name="twitter:description" content="运维的思维升级-不可变基础设施不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。">
   
     <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
   
@@ -95,18 +92,18 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>Contents</span></h2>
+			<h2 class="toc-title"><span>文章目錄</span></h2>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#运维的思维升级-不可变基础设施"><span class="toc-number">1.</span> <span class="toc-text">运维的思维升级-不可变基础设施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#云原生的定义"><span class="toc-number">1.0.1.</span> <span class="toc-text">云原生的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是不可变基础设施"><span class="toc-number">1.0.2.</span> <span class="toc-text">什么是不可变基础设施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变和不可变基础设施之间的差异"><span class="toc-number">1.0.3.</span> <span class="toc-text">可变和不可变基础设施之间的差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不可变基础设施的优势"><span class="toc-number">1.0.4.</span> <span class="toc-text">不可变基础设施的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#提升发布应用效率"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">提升发布应用效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#没有雪花服务器"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">没有雪花服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速水平扩展"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">快速水平扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的回滚和恢复"><span class="toc-number">1.0.4.4.</span> <span class="toc-text">简单的回滚和恢复</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#房多多的不可变基础设施实施细节"><span class="toc-number">1.0.5.</span> <span class="toc-text">房多多的不可变基础设施实施细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">1.1.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
 		
 		</div>
 		
-        <h1 id="运维的思维升级-不可变基础设施"><a href="#运维的思维升级-不可变基础设施" class="headerlink" title="运维的思维升级-不可变基础设施"></a>运维的思维升级-不可变基础设施</h1><p>不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。</p>
+        <h1 id="运维的思维升级-不可变基础设施"><a href="#运维的思维升级-不可变基础设施" class="headerlink" title="运维的思维升级-不可变基础设施"></a>运维的思维升级-不可变基础设施</h1><p>不可变基础设施（Immutable Infrastructure）是云原生的应用之一，常见的微服务、Service Mesh、容器、声明式API都是可以说是云原生应用。云原生是一个比较抽象的概念，甚至 CNCF 自己也因为其发展速度之快，对定义有过很多次更改。<br><a id="more"></a></p>
 <h3 id="云原生的定义"><a href="#云原生的定义" class="headerlink" title="云原生的定义"></a>云原生的定义</h3><p>云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行<strong>可弹性扩展的应用</strong>。云原生的代表技术包括<strong>容器、服务网格、微服务、不可变基础设施</strong>和<strong>声明式API。</strong></p>
 <p>这些技术能够构建<strong>容错性好</strong>、<strong>易于管理</strong>和<strong>便于观察</strong>的<strong>松耦合</strong>系统。结合可靠的<strong>自动化</strong>手段，云原生技术使工程师能够轻松地对系统作出<strong>频繁和可预测的重大变更</strong>。</p>
 <h3 id="什么是不可变基础设施"><a href="#什么是不可变基础设施" class="headerlink" title="什么是不可变基础设施"></a>什么是不可变基础设施</h3><p>在我们原先（现在还存在）的运维方式里，我们会用物理机或者虚拟机去安装操作系统、逐个上传代码部署业务应用、SSH 连接服务器、手动升级降级软件包的版本。总的来说当基础设施创建以后，它是会被经常更改的，这些物理机或者虚拟机在我的概念里都是 “可变的基础设施”、我从开发的角度认为它是非常传统和手工作坊的感觉。</p>
-<p>那相反来说，就可以想象出一个不可变的基础设施应该是怎么样的：在一个基础设施被创建以后，是不接受任何方式的更新的，这个基础设施也可以作为范本不断的扩展成 N 个。如果需要更新修改默写内容，应该先去修改对应的公共的配置，构建新的服务器，然后替换全部旧的服务器。简单的来说就是：旧的不去新的不来 : )</p>
-<p>不可变基础设施的优势在于更高的一致性和可靠性，创建、部署的过程也是<strong>可预测</strong>的。还可以避免Configuration Drift（配置漂移，为了解决某个业务特定问题，为某一个服务器安装了一个库等，然后出现了换一个环境应用起不来的情况）、Snowflake Servers（雪花服务器：这个服务器升级了 Python 版本以后，某些应用就是跑不起来）等等。</p>
+<p>那相反来说，就可以想象出一个不可变的基础设施应该是怎么样的：在一个基础设施被创建以后，是不接受任何方式的更新的，这个基础设施也可以作为范本不断的扩展成 N 个。如果需要更新修改默认的内容，应该先去修改对应的公共的配置，构建新的服务器，然后替换全部旧的服务器。简单的来说就是：旧的不去新的不来 : )</p>
+<p>不可变基础设施的优势在于更高的一致性和可靠性，创建、部署的过程也是<strong>可预测</strong>的。还可以避免Configuration Drift（配置漂移，为了解决某个业务特定问题，为某一个服务器安装了一个库等，然后出现了换一个环境应用起不来的情况）、Snowflake Servers（雪花服务器：管理一堆服务器，手动登陆每台服务器，手动安装众多软件，手动修改各种配置文件，导致每台服务器如同雪花一样独特，各服务器配置千差万别难以复制。）等等。</p>
 <h3 id="可变和不可变基础设施之间的差异"><a href="#可变和不可变基础设施之间的差异" class="headerlink" title="可变和不可变基础设施之间的差异"></a>可变和不可变基础设施之间的差异</h3><p>可变基础和不可变基础设施之间最根本的区别在于它们的核心理念：前者旨在在部署后进行更改; 后者旨在保持不变并从根本上进行替换。</p>
 <p>Randy Bias提出过一个很有意思的”宠物与牛”概念：传统的可变的基础设施是不可以随便替代的，它们像宠物一样：每一个对你来说都是独一无二的、无法模仿的、自己一手养大的、如果”死了”对你的打击是毁灭性的；可变的基础设施则是相反，它是一次性的、它是很容易通过自动化设施来横向扩展的，它们是一个牛群，没有一个是独一无二或者不可或缺的。</p>
 <p>他的原话：</p>
@@ -150,7 +147,7 @@
 
 	  
 <span>
-Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-01-12</time>
+更新日期:<time datetime="2019-01-14T01:54:23.755Z" itemprop="dateModified">2019-01-14</time>
 </span>
 
 
@@ -180,7 +177,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
         
           
   <div id="toc" class="toc-aside">
-  <h2 class="toc-title">Contents</h2>
+  <h2 class="toc-title">文章目錄</h2>
   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#运维的思维升级-不可变基础设施"><span class="toc-number">1.</span> <span class="toc-text">运维的思维升级-不可变基础设施</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#云原生的定义"><span class="toc-number">1.0.1.</span> <span class="toc-text">云原生的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是不可变基础设施"><span class="toc-number">1.0.2.</span> <span class="toc-text">什么是不可变基础设施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可变和不可变基础设施之间的差异"><span class="toc-number">1.0.3.</span> <span class="toc-text">可变和不可变基础设施之间的差异</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不可变基础设施的优势"><span class="toc-number">1.0.4.</span> <span class="toc-text">不可变基础设施的优势</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#提升发布应用效率"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">提升发布应用效率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#没有雪花服务器"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">没有雪花服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速水平扩展"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">快速水平扩展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的回滚和恢复"><span class="toc-number">1.0.4.4.</span> <span class="toc-text">简单的回滚和恢复</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#房多多的不可变基础设施实施细节"><span class="toc-number">1.0.5.</span> <span class="toc-text">房多多的不可变基础设施实施细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">1.1.</span> <span class="toc-text">结论</span></a></li></ol></li></ol>
   </div>
 
@@ -204,7 +201,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分類</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
@@ -214,7 +211,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">標簽</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
@@ -224,7 +221,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">標簽雲</h3>
     <div class="widget tagcloud">
       <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/devops/" style="font-size: 16.5px; color: #4dbc6f">devops</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
     </div>
@@ -244,7 +241,7 @@ Updated:<time datetime="2019-01-12T10:46:09.405Z" itemprop="dateModified">2019-0
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
         
