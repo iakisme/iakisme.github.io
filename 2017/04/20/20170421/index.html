@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>20170420周记 | 曲徑</title>
+  <title>20170420周记 | 曲径</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="从上一家公司结束以后，好像就丢了写日报/周报这个比较好的习惯。试过几次把培训的内容和学习的内容发到 blog，但是总会有一些拖延症，so 还是写周报/日报吧！这周的工作开始与写一个 sql lab的后端接口，用来接受 sql语句并返回查询结果，需要考虑到的几个点有 支持大多数 数据库，动态切换数据源。用什么来写呢，有三种选择：第一种是 spring boot+data(JPA)，Spring全家桶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20170420周记">
-<meta property="og:url" content="http://yoursite.com/2017/04/20/20170421/index.html">
-<meta property="og:site_name" content="曲徑">
+<meta property="og:url" content="https://wangkai1994.github.io/2017/04/20/20170421/index.html">
+<meta property="og:site_name" content="曲径">
 <meta property="og:description" content="从上一家公司结束以后，好像就丢了写日报/周报这个比较好的习惯。试过几次把培训的内容和学习的内容发到 blog，但是总会有一些拖延症，so 还是写周报/日报吧！这周的工作开始与写一个 sql lab的后端接口，用来接受 sql语句并返回查询结果，需要考虑到的几个点有 支持大多数 数据库，动态切换数据源。用什么来写呢，有三种选择：第一种是 spring boot+data(JPA)，Spring全家桶">
 <meta property="og:updated_time" content="2017-05-31T13:27:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="20170420周记">
 <meta name="twitter:description" content="从上一家公司结束以后，好像就丢了写日报/周报这个比较好的习惯。试过几次把培训的内容和学习的内容发到 blog，但是总会有一些拖延症，so 还是写周报/日报吧！这周的工作开始与写一个 sql lab的后端接口，用来接受 sql语句并返回查询结果，需要考虑到的几个点有 支持大多数 数据库，动态切换数据源。用什么来写呢，有三种选择：第一种是 spring boot+data(JPA)，Spring全家桶">
   
-    <link rel="alternative" href="/atom.xml" title="曲徑" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="曲径" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -35,7 +35,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">曲徑</a>
+        <a href="/" id="logo">曲径</a>
       </h1>
       
     </div>
@@ -58,7 +58,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wangkai1994.github.io"></form>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
       
 		
 		<div id="toc" class="toc-article">
-			<h2 class="toc-title"><span>文章目錄</span></h2>
+			<h2 class="toc-title"><span>文章目录</span></h2>
 		
 			
 		
@@ -102,7 +102,7 @@
 <ol>
 <li>需要跑多句 sql：sql一般都以分号结尾，那我就直接做一个 split 然后遍历执行 sql语句，按index加到需要返回的 JsonResponse里面就暂时解决了，不知道后面会不会有坑。</li>
 <li>原来使用的request.GET[‘param’] 会有问题，换成 request.GET.get(‘param’)才对。</li>
-<li>以前没有真正的写过前后端分离的代码，和前端对接的时候就会发现很多问题，比如跨域问题，详细见 blog<a href="http://wangkai1994.github.io/2017/04/15/20170415/" target="_blank" rel="external">http://wangkai1994.github.io/2017/04/15/20170415/</a></li>
+<li>以前没有真正的写过前后端分离的代码，和前端对接的时候就会发现很多问题，比如跨域问题，详细见 blog<a href="http://wangkai1994.github.io/2017/04/15/20170415/">http://wangkai1994.github.io/2017/04/15/20170415/</a></li>
 <li>切换数据源问题：一开始想的很复杂，想怎么把自己的 数据源Model 的数据加载到 settings里去，查了很久，后来突然想到 settings就是一个 Model啊，修改 database的值不就完了嘛。于是就有了想法，维护一个数据源 Model，里面含 URL。需要切换时，使用的时候用dj_database_url这样一个app来把  database url 解析成一个 Settings里可以正确使用的 dict，赋值给 Settings就 ok。尝试了一下，没有问题。搜索一上午，解决5分钟。</li>
 <li>那天解决以后洗澡时突然想到，如果一个人切换了settings里的 database，第二个人也在同时执行查询就会出现问题。所以修改了解决方案，数据源需要随着 sql 查询的请求发过来，每次查询结束以后把定义的数据源清空。这样又出现了另外的一个问题，需要考虑加互斥锁，不然同时操作时一定会出现数据源变化的问题，解决。</li>
 </ol>
@@ -165,7 +165,7 @@
         
           
   <div id="toc" class="toc-aside">
-  <h2 class="toc-title">文章目錄</h2>
+  <h2 class="toc-title">文章目录</h2>
   
   </div>
 
@@ -177,10 +177,10 @@
   <h3 class="widget-title">是我啊</h3>
   <ul class="widget about-me">
     
-    <li><img class="author" title="About me" src="http://p1.bqimg.com/1949/f866ce3d76cfa776.jpg" /></li>
+    <li><img class="author" title="About me" src="http://ww1.sinaimg.cn/large/ec235c5cgy1fz9lcmt24wj20cs0cs0tc.jpg" /></li>
     
     
-    <li>王开/云趣/Java/Python</li>
+    <li>王开/房多多/Devops/Python</li>
     
   </ul>
 </div>
@@ -189,7 +189,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">分類</h3>
+    <h3 class="widget-title">分类</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">-数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">-数据结构</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">-算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/行业/">-行业</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">-随笔</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><span class="category-list-count">2</span></li></ul>
     </div>
@@ -199,7 +199,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">標簽</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/">Django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PAT/">PAT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-数据结构/">leetcode 数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/大作业总结/">大作业总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实习/">实习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构-求女友/">数据结构 求女友</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">2</span></li></ul>
     </div>
@@ -209,7 +209,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">標簽雲</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
       <a href="/tags/Django/" style="font-size: 13px; color: #7dc3de">Django</a> <a href="/tags/PAT/" style="font-size: 13px; color: #7dc3de">PAT</a> <a href="/tags/devops/" style="font-size: 16.5px; color: #4dbc6f">devops</a> <a href="/tags/git/" style="font-size: 13px; color: #7dc3de">git</a> <a href="/tags/leetcode/" style="font-size: 13px; color: #7dc3de">leetcode</a> <a href="/tags/leetcode-数据结构/" style="font-size: 13px; color: #7dc3de">leetcode 数据结构</a> <a href="/tags/linux/" style="font-size: 13px; color: #7dc3de">linux</a> <a href="/tags/mysql/" style="font-size: 13px; color: #7dc3de">mysql</a> <a href="/tags/大作业总结/" style="font-size: 13px; color: #7dc3de">大作业总结</a> <a href="/tags/实习/" style="font-size: 13px; color: #7dc3de">实习</a> <a href="/tags/总结/" style="font-size: 13px; color: #7dc3de">总结</a> <a href="/tags/数据库/" style="font-size: 16.5px; color: #4dbc6f">数据库</a> <a href="/tags/数据结构/" style="font-size: 20px; color: #1db400">数据结构</a> <a href="/tags/数据结构-求女友/" style="font-size: 13px; color: #7dc3de">数据结构 求女友</a> <a href="/tags/简历/" style="font-size: 13px; color: #7dc3de">简历</a> <a href="/tags/读书笔记/" style="font-size: 13px; color: #7dc3de">读书笔记</a> <a href="/tags/随笔/" style="font-size: 16.5px; color: #4dbc6f">随笔</a>
     </div>
@@ -246,7 +246,7 @@
           </li>
         
           <li>
-            <a href="/2018/05/28/old-hawkeye-design/">old-hawkeye-design</a>
+            <a href="/2018/05/28/old-hawkeye-design/">鹰眼监控实现</a>
           </li>
         
           <li>
